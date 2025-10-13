@@ -14,7 +14,7 @@
         email varchar(100) not null unique,
         contrasena varchar(100) not null,
         puntos_acumulados int,
-        esAdmin boolean not null default false,
+        es_admin boolean not null default false,
         id_nivel int,
         foreign key (id_nivel) references nivel(id)
     );
