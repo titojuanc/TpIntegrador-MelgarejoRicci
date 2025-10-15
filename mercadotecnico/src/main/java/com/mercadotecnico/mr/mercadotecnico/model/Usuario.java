@@ -1,6 +1,5 @@
 package com.mercadotecnico.mr.mercadotecnico.model;
 
-import com.mercadotecnico.mr.mercadotecnico.repository.UserRepository;
 import jakarta.persistence.*;
 
 @Entity

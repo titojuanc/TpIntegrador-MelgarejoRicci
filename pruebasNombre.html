@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Datos del Usuario</title>
+</head>
+<body>
+<h1>Información del Usuario</h1>
+<h4>Buscar por nombre: </h4>
+  <input type="text" name="nombre" id="buscarNombre" placeholder="buscar...">
+  <button onclick="buscarPorNombre()">Buscar</button>
+<h4> Nombre: <span id="nombre"></span></h4>
+
+
+<script>
+    function buscarPorNombre() {  
+      const nombre = document.getElementById("buscarNombre").value
+      fetch(`http://localhost:8080/user/${nombre}`)
+      .then (res => res.json())
+      .then (data => {
+        console.log(data)
+        document.getElementById('nombre').textContent = data.nombre;
+      })
+      .catch( err => document.getElementById('nombre').textContent = "No se encontró el nombre")  
+    }
+
+
+    function nombre(){
+    fetch('http://localhost:8080/user') // hace GET a http://localhost:8080/user
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        document.getElementById('nombre').textContent = data.nombre;
+        document.getElementById('rol').textContent = data.apellido;
+      })
+      .catch(error => {
+        console.error('Error al obtener el usuario:', error);
+      });
+    }
+</script>
+</body>
+</html>

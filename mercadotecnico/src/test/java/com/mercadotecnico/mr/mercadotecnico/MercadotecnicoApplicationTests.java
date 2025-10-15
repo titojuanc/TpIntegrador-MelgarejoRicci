@@ -1,4 +1,4 @@
-package com.mercadotecnico.mr.mercadotecnico;
+package test.java.com.mercadotecnico.mr.mercadotecnico;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
