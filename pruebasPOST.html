@@ -72,7 +72,7 @@
 
 <div class="container">
     <h1>Formulario de Inscripción</h1>
-    <form action="https://localhost:8080/" method="POST">
+    <form action="" method="POST" id="registroForm">
         <div class="form-group">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
@@ -127,7 +127,7 @@
         };
 
         // Enviar la solicitud POST usando Fetch API
-        fetch("http://localhost:8080", {
+        fetch("http://localhost:8080/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

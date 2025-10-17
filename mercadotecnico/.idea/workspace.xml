@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a5f6f89-0f75-42d7-89d2-a38f4b52e66e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/Servicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/TP-MercadoTecnico.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/TP-MercadoTecnico.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/checksums/md5-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/checksums/sha1-checksums.bin" afterDir="false" />
@@ -17,23 +14,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/controller/EjController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/controller/EjController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Usuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/holamundo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/EjController.class.uniqueId2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserRepository.class.uniqueId1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Usuario.class.uniqueId0" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/EjController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/EjController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Usuario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/holamundo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/mercadotecnico/mr/mercadotecnico/MercadotecnicoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mercadotecnico/mr/mercadotecnico/MercadotecnicoApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pruebasPOST.html" beforeDir="false" afterPath="$PROJECT_DIR$/../pruebasPOST.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,12 +54,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.MercadotecnicoApplication.executor": "Run",
     "DefaultHtmlFileTemplate": "HTML File",
     "Gradle./home/Alumno26.MELGAREJO.Juan@ipm.edu.ar/Escritorio/TpIntegrador-MelgarejoRicci/mercadotecnico/build.gradle.executor": "Run",
     "Gradle.mercadotecnico [:com.mercadotecnico.mr.mercadotecnico.MercadotecnicoApplication.main()].executor": "Run",
     "Gradle.mercadotecnico.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
@@ -138,9 +127,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MercadotecnicoApplication" />
         <item itemvalue="Gradle./home/Alumno26.MELGAREJO.Juan@ipm.edu.ar/Escritorio/TpIntegrador-MelgarejoRicci/mercadotecnico/build.gradle" />
         <item itemvalue="Gradle.mercadotecnico" />
-        <item itemvalue="Application.MercadotecnicoApplication" />
       </list>
     </recent_temporary>
   </component>
