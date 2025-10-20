@@ -15,7 +15,8 @@
         contrasena varchar(100) not null,
         puntos_acumulados int,
         es_admin boolean not null default false,
-        id_nivel int,
+        id_nivel int default 1,
+        reputacion int,
         foreign key (id_nivel) references nivel(id)
     );
 
@@ -42,12 +43,14 @@
         precio decimal(10,2) not null,
         stock int not null,
         id_usuario int,
+        estado varchar(255) not null,
         foreign key (id_usuario) references usuario(id)
     );
 
     create table servicio (
         id_publicacion int primary key,
-        foreign key (id_publicacion) references publicacion(id)
+        foreign key (id_publicacion) references publicacion(id),
+
     );
 
     create table dias (

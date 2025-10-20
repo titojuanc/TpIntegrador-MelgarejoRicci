@@ -11,8 +11,4 @@ public interface UserRepository extends JpaRepository<Usuario, Long> {
     //Busca por nombre exacto
     Optional<Usuario> findByNombre(String nombre);
 
-    //Verificar si existe un usuario por nombre
-    boolean existsByNombre(String nombre);
-
-    //Usuario buscarPorNombre(String nombre);
 }
