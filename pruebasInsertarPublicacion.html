@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Agregar nueva publicación</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:#f5f7fb;
+      margin:0;
+      padding:20px;
+      color:#111;
+    }
+    h1 {
+      text-align:center;
+      font-size:26px;
+      margin-bottom:24px;
+    }
+    .card {
+      max-width:600px;
+      margin:30px auto;
+      background:#fff;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(15,23,42,0.08);
+      padding:24px;
+    }
+    label {
+      display:block;
+      margin-bottom:6px;
+      font-weight:600;
+      color:#333;
+    }
+    input, textarea, select {
+      width:100%;
+      padding:10px;
+      border:1px solid #ccc;
+      border-radius:8px;
+      font-size:14px;
+      margin-bottom:16px;
+      resize:vertical;
+    }
+    button {
+      background:#0b62d0;
+      color:#fff;
+      border:none;
+      padding:10px 18px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      font-size:15px;
+    }
+    button:hover {
+      background:#094fa7;
+    }
+    .msg {
+      text-align:center;
+      margin-top:20px;
+      font-weight:600;
+    }
+    .success { color:#0b8a3e; }
+    .error { color:#d03030; }
+  </style>
+</head>
+<body>
+  <h1>Agregar nueva publicación</h1>
+
+  <div class="card">
+    <form id="formPublicacion">
+      <label for="nombre">Nombre del producto</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Ej: Brochas de papel" required>
+
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" name="descripcion" rows="3" placeholder="Describe tu producto..." required></textarea>
+
+      <label for="precio">Precio</label>
+      <input type="number" id="precio" name="precio" step="0.01" placeholder="Ej: 50.00" required>
+
+      <label for="stock">Stock inicial</label>
+      <input type="number" id="stock" name="stock" placeholder="Ej: 50" required>
+
+      <label for="id_usuario">ID de usuario</label>
+      <input type="number" id="id_usuario" name="id_usuario" placeholder="Ej: 1" required>
+
+      <label for="estado">Estado</label>
+      <select id="estado" name="estado" required>
+        <option value="">Seleccionar estado</option>
+        <option value="Activo">Activo</option>
+        <option value="En pausa">En pausa</option>
+        <option value="Inactivo">Inactivo</option>
+      </select>
+
+      <div style="text-align:center;margin-top:20px;">
+        <button type="submit">Guardar publicación</button>
+      </div>
+    </form>
+
+    <div id="mensaje" class="msg"></div>
+  </div>
+
+  <script>
+    document.getElementById("formPublicacion").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Crear un objeto con los datos del formulario
+        const formData = {
+            nombre: document.getElementById("nombre").value,
+            descripcion: document.getElementById("descripcion").value,
+            precio: document.getElementById("precio").value,
+            fechaPublicacion: new Date(),
+            stock: document.getElementById("stock").value,
+            id_usuario: 5,
+            estado: document.getElementById("estado").value
+        };
+
+        console.log(formData);
+        
+        // Enviar la solicitud POST usando Fetch API
+        fetch("http://localhost:8080/POST/api/usuarios/1/publicaciones", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Usuario creado:", data);
+        })
+        .catch(error => {
+            console.error("Error al crear el usuario:", error);
+        });
+    });
+  </script>
+</body>
+</html>

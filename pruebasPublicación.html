@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Publicación - Lápiz mecánico</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:#f5f7fb; margin:0; padding:20px; color:#111; }
+    .card { max-width:720px; margin:30px auto; background:#fff; border-radius:12px; box-shadow:0 6px 18px rgba(15,23,42,0.08); padding:24px; }
+    .header { display:flex; gap:16px; align-items:center; }
+    .thumb { width:120px; height:120px; background:linear-gradient(135deg,#e9eef8,#ffffff); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:48px; color:#6b78a0; }
+    h1 { margin:0; font-size:20px; }
+    .meta { color:#5b6470; font-size:14px; margin-top:6px; }
+    .desc { margin-top:18px; line-height:1.6; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px; }
+    .item { background:#f8fafc; padding:12px; border-radius:8px; font-size:14px; }
+    .price { font-weight:700; font-size:20px; color:#0b62d0; }
+    .footer { margin-top:20px; display:flex; justify-content:space-between; align-items:center; }
+    .btn { background:#0b62d0; color:#fff; border:none; padding:8px 14px; border-radius:8px; cursor:pointer; text-decoration:none; }
+    .estado { padding:6px 10px; border-radius:999px; font-weight:600; }
+    .activo { background:#e6f6ec; color:#0b8a3e; }
+    .inactivo { background:#fff1f0; color:#d03030; }
+    @media (max-width:560px){ .grid{grid-template-columns:1fr} .header{flex-direction:column; align-items:flex-start} .thumb{width:100%; height:120px} }
+  </style>
+</head>
+<body>
+    <input type="text" name="nombre" id="nombreActual" placeholder="cuentaActual">
+    <input type="text" name="nombre" id="buscarId" placeholder="buscarId">
+    <button onclick="getPublicacion()">Buscar</button>
+  <div class="card" role="article" aria-labelledby="titulo">
+    <div class="header">
+      <div class="thumb" aria-hidden="true">✏️</div>
+      <div>
+        <h1 id="titulo">Lápiz mecánico</h1>
+        <div class="meta">Publicado por <strong id="usuario">Usuario #1</strong> — <time datetime="2025-10-20" id="fecha">20 de octubre de 2025</time></div>
+      </div>
+    </div>
+
+    <p class="desc" id="descripcion">Lápiz mecánico de alta precisión, ideal para dibujo técnico y escritura. Punta resistente, diseño ergonómico y repuestos disponibles.</p>
+
+    <div class="grid" role="list">
+      <div class="item" role="listitem">
+        <div style="color:#6b7280;font-size:12px">Precio</div>
+        <div class="price" id="precio">$20.50</div>
+      </div>
+      <div class="item" role="listitem">
+        <div style="color:#6b7280;font-size:12px">Stock</div>
+        <div class="stock" id="stock">100 unidades</div>
+      </div>
+      <div class="item" role="listitem">
+        <div style="color:#6b7280;font-size:12px">Estado</div>
+        <div class="estado" id="estado">Activo</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div style="color:#6b7280;font-size:13px">ID publicación: <strong id="idPublicacion">a</strong></div>
+      <a class="btn" href="#" onclick="alert('Contacto enviado al vendedor (simulado).'); return false;">Contactar al vendedor</a>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+<script>
+    function getPublicacion() {  
+      const nombre = document.getElementById("nombreActual").value
+      const id = document.getElementById("buscarId").value
+      fetch(`http://localhost:8080/GET/api/usuarios/${nombre}/publicacion/${id}`)
+      .then (res => res.json())
+      .then (data => {
+        console.log(data)
+        document.getElementById('titulo').textContent = data.nombre;
+        document.getElementById('descripcion').textContent = data.descripcion;
+        document.getElementById('precio').textContent = '$'+data.precio;
+        document.getElementById('usuario').textContent = data.usuario.nombre;
+        document.getElementById('fecha').textContent = data.fechaPublicacion;
+        document.getElementById('estado').textContent = data.estado;
+        document.getElementById('idPublicacion').textContent = data.id;
+        document.getElementById('stock').textContent = data.stock;
+
+      })
+      .catch( err => document.getElementById('nombre').textContent = "No se encontró el nombre")  
+    }
+</script>

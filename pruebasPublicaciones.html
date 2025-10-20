@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Publicaciones del Usuario</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 { text-align: center; color: #222; }
+    #buscar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #0b62d0;
+      color: white;
+      cursor: pointer;
+      border: none;
+    }
+    button:hover { background-color: #094fa8; }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .card h2 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+    .precio {
+      font-weight: bold;
+      color: #0b62d0;
+      font-size: 16px;
+    }
+    .estado {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .activo { background: #e6f6ec; color: #0b8a3e; }
+    .inactivo { background: #fff1f0; color: #d03030; }
+  </style>
+</head>
+<body>
+  <h1>Buscar publicaciones por ID de usuario</h1>
+
+  <div id="buscar">
+    <input type="number" id="userId" placeholder="Ingrese ID del usuario" />
+    <button onclick="buscarPublicaciones()">Buscar</button>
+  </div>
+
+  <div id="resultado" class="container"></div>
+
+  <script>
+    async function buscarPublicaciones() {
+      const idUsuario = document.getElementById("userId").value.trim();
+      const contenedor = document.getElementById("resultado");
+      contenedor.innerHTML = "";
+
+      if (!idUsuario) {
+        alert("Por favor, ingrese un ID de usuario.");
+        return;
+      }
+
+      try {
+        // Ajusta la URL base a tu backend
+        const resp = await fetch(`http://localhost:8080/GET/api/usuarios/${idUsuario}/publicaciones`);
+        if (!resp.ok) throw new Error("No se pudieron obtener las publicaciones");
+
+        const publicaciones = await resp.json();
+
+        if (!publicaciones || publicaciones.length === 0) {
+          contenedor.innerHTML = "<p>No se encontraron publicaciones para este usuario.</p>";
+          return;
+        }
+
+        publicaciones.forEach(pub => {
+          const div = document.createElement("div");
+          div.className = "card";
+          div.innerHTML = `
+            <h2>${pub.nombre}</h2>
+            <p>${pub.descripcion}</p>
+            <p class="precio">$${pub.precio.toFixed(2)}</p>
+            <p><strong>Stock:</strong> ${pub.stock}</p>
+            <p><strong>Fecha:</strong> ${pub.fechaPublicacion}</p>
+            <span class="estado ${pub.estado.toLowerCase()}">${pub.estado}</span>
+          `;
+          contenedor.appendChild(div);
+        });
+
+      } catch (err) {
+        console.error(err);
+        contenedor.innerHTML = "<p style='color:red;'>Error al obtener publicaciones.</p>";
+      }
+    }
+  </script>
+</body>
+</html>
