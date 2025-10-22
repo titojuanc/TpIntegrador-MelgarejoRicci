@@ -63,15 +63,15 @@
   </style>
 </head>
 <body>
-  <h1>Agregar nueva publicación</h1>
+<h1>Agregar nueva publicación</h1>
 
   <div class="card">
     <form id="formPublicacion">
-      <label for="nombre">Nombre del producto</label>
+      <label for="nombre">Nombre del producto o servicio</label>
       <input type="text" id="nombre" name="nombre" placeholder="Ej: Brochas de papel" required>
 
       <label for="descripcion">Descripción</label>
-      <textarea id="descripcion" name="descripcion" rows="3" placeholder="Describe tu producto..." required></textarea>
+      <textarea id="descripcion" name="descripcion" rows="3" placeholder="Describe tu publicación..." required></textarea>
 
       <label for="precio">Precio</label>
       <input type="number" id="precio" name="precio" step="0.01" placeholder="Ej: 50.00" required>
@@ -90,6 +90,25 @@
         <option value="Inactivo">Inactivo</option>
       </select>
 
+      <label for="contenido">Tipo de contenido</label>
+      <select id="contenido" name="contenido" required>
+        <option value="">Seleccione una opción</option>
+        <option value="Producto">Producto</option>
+        <option value="Servicio">Servicio</option>
+      </select>
+
+      <!-- Campo para Producto -->
+      <div id="campoGarantia" class="oculto">
+        <label for="garantia">Días de garantía</label>
+        <input type="number" id="garantia" name="garantia" min="0" placeholder="Ej: 30">
+      </div>
+
+      <!-- Campo para Servicio -->
+      <div id="campoFecha" class="oculto">
+        <label for="fechaCanje">Fecha de canje</label>
+        <input type="date" id="fechaCanje" name="fechaCanje">
+      </div>
+
       <div style="text-align:center;margin-top:20px;">
         <button type="submit">Guardar publicación</button>
       </div>
@@ -99,6 +118,25 @@
   </div>
 
   <script>
+    const contenidoSelect = document.getElementById('contenido');
+    const campoGarantia = document.getElementById('campoGarantia');
+    const campoFecha = document.getElementById('campoFecha');
+
+    // Mostrar/ocultar campos según la selección
+    contenidoSelect.addEventListener('change', function() {
+      if (this.value === 'Producto') {
+        campoGarantia.classList.remove('oculto');
+        campoFecha.classList.add('oculto');
+      } else if (this.value === 'Servicio') {
+        campoFecha.classList.remove('oculto');
+        campoGarantia.classList.add('oculto');
+      } else {
+        campoGarantia.classList.add('oculto');
+        campoFecha.classList.add('oculto');
+      }
+    });
+
+
     document.getElementById("formPublicacion").addEventListener("submit", function(event) {
         event.preventDefault();
 
@@ -110,7 +148,9 @@
             fechaPublicacion: new Date(),
             stock: document.getElementById("stock").value,
             id_usuario: 5,
-            estado: document.getElementById("estado").value
+            estado: document.getElementById("estado").value,
+            contenido: document.getElementById("estado").value
+            
         };
 
         console.log(formData);

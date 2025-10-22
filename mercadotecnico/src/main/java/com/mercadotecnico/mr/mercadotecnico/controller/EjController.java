@@ -1,6 +1,7 @@
 package com.mercadotecnico.mr.mercadotecnico.controller;
 
 
+import com.mercadotecnico.mr.mercadotecnico.dto.PublicacionDTO;
 import com.mercadotecnico.mr.mercadotecnico.model.Publicacion;
 import com.mercadotecnico.mr.mercadotecnico.model.Usuario;
 import com.mercadotecnico.mr.mercadotecnico.repository.PublicacionRepository;
@@ -8,6 +9,7 @@ import com.mercadotecnico.mr.mercadotecnico.repository.UserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Console;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,10 +50,11 @@ public class EjController {
         return bdd_publicaciones.findByUsuario_Id(idUsuario);
     }
 
+
+    // punto 3b
     @PostMapping("POST/api/usuarios/{idUsuario}/publicaciones")
-    public Publicacion crearPublicacion(@PathVariable Long idUsuario, @RequestBody Publicacion publicacion){
-        publicacion.setUsuario(bdd_usuarios.findById(idUsuario).get());
-        return bdd_publicaciones.save(publicacion);
+    public void crearPublicacion(@PathVariable Long idUsuario, @RequestBody PublicacionDTO publicacion){
+        System.out.println(publicacion);
     }
 
 }
