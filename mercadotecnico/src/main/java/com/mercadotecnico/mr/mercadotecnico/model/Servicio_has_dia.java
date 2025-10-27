@@ -26,6 +26,9 @@ public class Servicio_has_dia {
     public Servicio_has_dia(Servicio servicio, Dia dia) {
         this.servicio = servicio;
         this.dia = dia;
+        if (servicio != null && servicio.getId() != null && dia != null && dia.getId() != null) {
+            this.id = new ServicioDiaId(servicio.getId(), dia.getId());
+        }
     }
 
     public Servicio getServicio() {

@@ -70,6 +70,17 @@ public class EjController {
             System.out.println(producto.getGarantia());
             bdd_productos.save(producto);
         }
+        else {
+            Servicio servicio = new Servicio(publicacion);
+            bdd_servicios.save(servicio);
+            for (Long d : dto.getDias()){
+                Dia diaAux = bdd_dias.findById(d).get();
+                Servicio_has_dia diasdeservicio = new Servicio_has_dia(servicio, diaAux);
+                System.out.println(diasdeservicio.getServicio().getPublicacion().getNombre());
+                System.out.println(bdd_dias.findById(d).get().getDia());
+                bdd_diasDeServicio.save(diasdeservicio);
+            }
+        }
     }
 
 }

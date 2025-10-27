@@ -30,4 +30,12 @@ public class Servicio {
     public void setPublicacion(Publicacion publicacion) {
         this.publicacion = publicacion;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

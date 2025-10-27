@@ -15,6 +15,8 @@ public class ServicioDiaId implements Serializable {
     @Column(name = "id_dia")
     private Long id_dia;
 
+    public ServicioDiaId(){}
+
     public ServicioDiaId(Long id_servicio, Long id_dia) {
         this.id_servicio = id_servicio;
         this.id_dia = id_dia;
