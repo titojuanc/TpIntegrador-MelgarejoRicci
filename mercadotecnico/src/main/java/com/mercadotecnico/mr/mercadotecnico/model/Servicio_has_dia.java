@@ -1,18 +1,23 @@
 package com.mercadotecnico.mr.mercadotecnico.model;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
+
+@Entity
+@Table(name = "servicio_has_dia", schema = "TPMercadoTecnico")
 public class Servicio_has_dia {
-    @Id
+
+    @EmbeddedId
+    private ServicioDiaId id;
+
     @ManyToOne
+    @MapsId("id_servicio")
     @JoinColumn(name = "id_servicio", nullable = false)
     private Servicio servicio;
 
-    @Id
+
     @ManyToOne
+    @MapsId("id_dia")
     @JoinColumn(name = "id_dia", nullable = false)
     private Dia dia;
 

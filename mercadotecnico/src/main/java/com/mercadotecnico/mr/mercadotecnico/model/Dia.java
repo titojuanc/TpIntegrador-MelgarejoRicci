@@ -2,6 +2,9 @@ package com.mercadotecnico.mr.mercadotecnico.model;
 
 import jakarta.persistence.*;
 
+
+@Entity
+@Table (name = "dia")
 public class Dia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table (name = "publicacion")
 public class Publicacion {
     /* id int primary key auto_increment,
         nombre varchar(255) not null,
@@ -31,9 +32,8 @@ public class Publicacion {
 
     public Publicacion() {}
 
-    public Publicacion(Long id, String nombre, String descripcion, LocalDate fechaPublicacion,
+    public Publicacion(String nombre, String descripcion, LocalDate fechaPublicacion,
                        Double precio, int stock, Usuario usuario, String estado) {
-        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaPublicacion = fechaPublicacion;

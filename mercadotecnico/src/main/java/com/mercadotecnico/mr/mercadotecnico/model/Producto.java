@@ -2,25 +2,27 @@ package com.mercadotecnico.mr.mercadotecnico.model;
 
 import jakarta.persistence.*;
 
-import java.lang.reflect.Array;
-
 
 @Entity
-@Table(name = "servicio")
-public class Servicio {
+@Table(name = "producto")
+public class Producto {
 
     @Id
     private Long id;
+
 
     @OneToOne
     @MapsId
     @JoinColumn(name = "id_publicacion", nullable = false)
     private Publicacion publicacion;
 
-    public Servicio(){}
+    private int garantia;
 
-    public Servicio(Publicacion publicacion) {
-        this.publicacion = publicacion;
+    public Producto(){}
+
+    public Producto(Publicacion publicacion, int garantia){
+        this.publicacion=publicacion;
+        this.garantia=garantia;
     }
 
     public Publicacion getPublicacion() {
@@ -29,5 +31,13 @@ public class Servicio {
 
     public void setPublicacion(Publicacion publicacion) {
         this.publicacion = publicacion;
+    }
+
+    public int getGarantia() {
+        return garantia;
+    }
+
+    public void setGarantia(int garantia) {
+        this.garantia = garantia;
     }
 }
