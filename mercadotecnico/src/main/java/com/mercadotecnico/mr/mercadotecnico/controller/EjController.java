@@ -4,6 +4,7 @@ package com.mercadotecnico.mr.mercadotecnico.controller;
 import com.mercadotecnico.mr.mercadotecnico.dto.PublicacionDTO;
 import com.mercadotecnico.mr.mercadotecnico.model.*;
 import com.mercadotecnico.mr.mercadotecnico.repository.*;
+import com.mercadotecnico.mr.mercadotecnico.service.PublicacionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,14 +22,18 @@ public class EjController {
     ServicioRepository bdd_servicios;
     DiasServicioRepository bdd_diasDeServicio;
     ProductoRepository bdd_productos;
+    CalendarioRepository bdd_calendario;
+    PublicacionService servicio_publicaciones;
 
-    public EjController(UserRepository bdd_usuarios, PublicacionRepository bdd_publicaciones, DiaReposiroty bdd_dias, ServicioRepository bdd_servicios, DiasServicioRepository bdd_diasDeServicio, ProductoRepository bdd_productos){
-        this.bdd_usuarios=bdd_usuarios;
-        this.bdd_publicaciones=bdd_publicaciones;
-        this.bdd_dias=bdd_dias;
-        this.bdd_diasDeServicio= bdd_diasDeServicio;
+    public EjController(UserRepository bdd_usuarios, PublicacionRepository bdd_publicaciones, PublicacionService servicio_publicaciones,DiaReposiroty bdd_dias, ServicioRepository bdd_servicios, DiasServicioRepository bdd_diasDeServicio, ProductoRepository bdd_productos, CalendarioRepository bdd_calendario) {
+        this.bdd_usuarios = bdd_usuarios;
+        this.bdd_publicaciones = bdd_publicaciones;
+        this.bdd_dias = bdd_dias;
         this.bdd_servicios = bdd_servicios;
-        this.bdd_productos=bdd_productos;
+        this.bdd_diasDeServicio = bdd_diasDeServicio;
+        this.bdd_productos = bdd_productos;
+        this.bdd_calendario = bdd_calendario;
+        this.servicio_publicaciones=servicio_publicaciones;
     }
 
     //  GET - obtener por nombre
@@ -50,6 +55,8 @@ public class EjController {
         return bdd_publicaciones.findById(id);
     }
 
+
+    // punto 3c
     @GetMapping("/GET/api/usuarios/{idUsuario}/publicaciones")
     public Optional<List<Publicacion>> obtenerPublicacionesDeUsuario(@PathVariable Long idUsuario){
         return bdd_publicaciones.findByUsuario_Id(idUsuario);
@@ -82,5 +89,33 @@ public class EjController {
             }
         }
     }
+
+
+    //3d - debería poder accederse sólo desde la cuenta de un admin
+    @DeleteMapping("DELETE/api/admin/publicaciones/{id}")
+    public ResponseEntity<?> eliminarPublicacion(@PathVariable Long id) throws Exception {
+        if (bdd_publicaciones.findById(id).isPresent()){
+            Publicacion publicacion = bdd_publicaciones.findById(id).get();
+            if (bdd_servicios.findById(id).isPresent()){
+                if (bdd_calendario.findByServicio(bdd_servicios.findById(id).get()).isPresent()){
+                    servicio_publicaciones.actualizarEstado(id, "En pausa");
+                    return ResponseEntity.ok("La publicación se pausó porque hay usuarios que tienen contratado el servicio. Una vez finalizado, puede borrarse");
+                } else {
+                    bdd_servicios.delete(bdd_servicios.findById(id).get());
+                    bdd_publicaciones.delete(publicacion);
+                    return ResponseEntity.ok("Se borró con éxito");
+                }
+            } else { // Si no es servicio, es producto si o si
+                bdd_productos.delete(bdd_productos.findById(id).get());
+                bdd_publicaciones.delete(publicacion);
+                return ResponseEntity.ok("Se borró con éxito");
+            }
+        } else {
+            return ResponseEntity.badRequest().body("No existe publicacion con ese ID");
+        }
+    }
+
+    //3e
+
 
 }
