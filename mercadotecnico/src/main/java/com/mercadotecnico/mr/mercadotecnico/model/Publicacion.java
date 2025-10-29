@@ -23,7 +23,6 @@ public class Publicacion {
     private String descripcion;
     private LocalDate fechaPublicacion;
     private Double precio;
-    private int stock;
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario; // <-- relación con la entidad Usuario
@@ -33,12 +32,11 @@ public class Publicacion {
     public Publicacion() {}
 
     public Publicacion(String nombre, String descripcion, LocalDate fechaPublicacion,
-                       Double precio, int stock, Usuario usuario, String estado) {
+                       Double precio, Usuario usuario, String estado) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaPublicacion = fechaPublicacion;
         this.precio = precio;
-        this.stock = stock;
         this.usuario = usuario;
         this.estado = estado;
     }
@@ -58,9 +56,6 @@ public class Publicacion {
 
     public Double getPrecio() { return precio; }
     public void setPrecio(Double precio) { this.precio = precio; }
-
-    public int getStock() { return stock; }
-    public void setStock(int stock) { this.stock = stock; }
 
     public Usuario getUsuario() { return usuario; }
     public void setUsuario(Usuario usuario) { this.usuario = usuario; }

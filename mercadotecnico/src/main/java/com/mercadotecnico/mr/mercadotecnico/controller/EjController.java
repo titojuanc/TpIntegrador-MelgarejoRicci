@@ -1,9 +1,11 @@
 package com.mercadotecnico.mr.mercadotecnico.controller;
 
 
+import com.mercadotecnico.mr.mercadotecnico.dto.CompraDTO;
 import com.mercadotecnico.mr.mercadotecnico.dto.PublicacionDTO;
 import com.mercadotecnico.mr.mercadotecnico.model.*;
 import com.mercadotecnico.mr.mercadotecnico.repository.*;
+import com.mercadotecnico.mr.mercadotecnico.service.CompraService;
 import com.mercadotecnico.mr.mercadotecnico.service.PublicacionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +26,9 @@ public class EjController {
     ProductoRepository bdd_productos;
     CalendarioRepository bdd_calendario;
     PublicacionService servicio_publicaciones;
+    CompraService servicio_compras;
 
-    public EjController(UserRepository bdd_usuarios, PublicacionRepository bdd_publicaciones, PublicacionService servicio_publicaciones,DiaReposiroty bdd_dias, ServicioRepository bdd_servicios, DiasServicioRepository bdd_diasDeServicio, ProductoRepository bdd_productos, CalendarioRepository bdd_calendario) {
+    public EjController(UserRepository bdd_usuarios, PublicacionRepository bdd_publicaciones, DiaReposiroty bdd_dias, ServicioRepository bdd_servicios, DiasServicioRepository bdd_diasDeServicio, ProductoRepository bdd_productos, CalendarioRepository bdd_calendario, PublicacionService servicio_publicaciones, CompraService servicio_compras) {
         this.bdd_usuarios = bdd_usuarios;
         this.bdd_publicaciones = bdd_publicaciones;
         this.bdd_dias = bdd_dias;
@@ -33,7 +36,8 @@ public class EjController {
         this.bdd_diasDeServicio = bdd_diasDeServicio;
         this.bdd_productos = bdd_productos;
         this.bdd_calendario = bdd_calendario;
-        this.servicio_publicaciones=servicio_publicaciones;
+        this.servicio_publicaciones = servicio_publicaciones;
+        this.servicio_compras = servicio_compras;
     }
 
     //  GET - obtener por nombre
@@ -69,11 +73,11 @@ public class EjController {
         System.out.println(dto );
         Usuario usuario =  bdd_usuarios.findById(dto.getId_usuario()).get();
         System.out.println(usuario.getNombre());
-        Publicacion publicacion = new Publicacion(dto.getNombre(), dto.getDescripcion(), dto.getFechaPublicacion(), dto.getPrecio(), dto.getStock(), usuario, dto.getEstado());
+        Publicacion publicacion = new Publicacion(dto.getNombre(), dto.getDescripcion(), dto.getFechaPublicacion(), dto.getPrecio(), usuario, dto.getEstado());
         System.out.println(publicacion.getEstado());
         bdd_publicaciones.save(publicacion);
         if (dto.getTipo().equals("Producto")){
-            Producto producto = new Producto(publicacion, dto.getGarantia());
+            Producto producto = new Producto(publicacion, dto.getGarantia(), dto.getStock());
             System.out.println(producto.getGarantia());
             bdd_productos.save(producto);
         }
@@ -97,7 +101,7 @@ public class EjController {
         if (bdd_publicaciones.findById(id).isPresent()){
             Publicacion publicacion = bdd_publicaciones.findById(id).get();
             if (bdd_servicios.findById(id).isPresent()){
-                if (bdd_calendario.findByServicio(bdd_servicios.findById(id).get()).isPresent()){
+                if (!bdd_calendario.findByServicio(bdd_servicios.findById(id).get()).isEmpty()){
                     servicio_publicaciones.actualizarEstado(id, "En pausa");
                     return ResponseEntity.ok("La publicación se pausó porque hay usuarios que tienen contratado el servicio. Una vez finalizado, puede borrarse");
                 } else {
@@ -118,7 +122,13 @@ public class EjController {
     //3e
     @GetMapping("GET/api/usuarios/{id}/compras/")
     public ResponseEntity<?> mostrarCompras(@PathVariable Long id){
+        return ResponseEntity.ok("a");
+    }
 
+    @PostMapping("POST/api/usuarios/{idUsuario}/compras/{idPublicacion}")
+    public ResponseEntity<?> comprar(@PathVariable Long idUsuario, @PathVariable Long idPublicacion, @RequestBody CompraDTO dto){
+        System.out.println(dto.getId_publicacion());
+        return servicio_compras.crear(dto);
     }
 
 
