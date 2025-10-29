@@ -116,6 +116,10 @@ public class EjController {
     }
 
     //3e
+    @GetMapping("GET/api/usuarios/{id}/compras/")
+    public ResponseEntity<?> mostrarCompras(@PathVariable Long id){
+
+    }
 
 
 }
