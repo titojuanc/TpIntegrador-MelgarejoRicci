@@ -71,4 +71,8 @@ public class CompraService {
         }
         return ResponseEntity.ok("Cómo pingo llegué acá???");
     }
+
+    public List<Compra> comprasPorUsuario(Usuario usuario){
+        return bdd_compras.findByUsuario(usuario);
+    }
 }

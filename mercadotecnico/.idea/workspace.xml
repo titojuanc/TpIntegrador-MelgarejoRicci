@@ -5,34 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a5f6f89-0f75-42d7-89d2-a38f4b52e66e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/CompraDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/repository/CompraRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/service/CompraService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/controller/EjController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/controller/EjController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Producto.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Producto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Publicacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Publicacion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/repository/PublicacionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/repository/PublicacionRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/EjController.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/repository/CompraRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/repository/CompraRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/service/CompraService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/service/CompraService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/CompraService.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/EjController.class.uniqueId1" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/EjController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/EjController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Calendario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Calendario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Compra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Producto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Publicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Publicacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/repository/CalendarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/repository/CalendarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/repository/PublicacionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/repository/PublicacionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/repository/CompraRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/repository/CompraRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/service/CompraService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/service/CompraService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +66,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "titojuanc"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/titojuanc/TpIntegrador-MelgarejoRicci.git",
+    "accountId": "ef93d538-c243-4257-a297-8fe6c7581ec1"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>

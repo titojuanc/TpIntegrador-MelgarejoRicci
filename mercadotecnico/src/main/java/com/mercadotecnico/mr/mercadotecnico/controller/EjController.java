@@ -121,15 +121,17 @@ public class EjController {
 
     //3e
     @GetMapping("GET/api/usuarios/{id}/compras/")
-    public ResponseEntity<?> mostrarCompras(@PathVariable Long id){
-        return ResponseEntity.ok("a");
+    public List<Compra> mostrarCompras(@PathVariable Long id){
+        Usuario usuario = bdd_usuarios.findById(id).get();
+        return servicio_compras.comprasPorUsuario(usuario);
     }
 
+    //3f
     @PostMapping("POST/api/usuarios/{idUsuario}/compras/{idPublicacion}")
     public ResponseEntity<?> comprar(@PathVariable Long idUsuario, @PathVariable Long idPublicacion, @RequestBody CompraDTO dto){
         System.out.println(dto.getId_publicacion());
         return servicio_compras.crear(dto);
     }
 
-
+    
 }
