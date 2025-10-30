@@ -5,6 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a5f6f89-0f75-42d7-89d2-a38f4b52e66e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/NivelDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Nivel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/repository/NivelRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.bin" afterDir="false" />
@@ -14,14 +18,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/controller/EjController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/controller/EjController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/repository/CompraRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/repository/CompraRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/service/CompraService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/service/CompraService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/CompraService.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/EjController.class.uniqueId1" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/EjController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/EjController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/repository/CompraRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/repository/CompraRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/service/CompraService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/service/CompraService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,26 +56,26 @@
       <list>
         <option value="HTML File" />
         <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "titojuanc"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;titojuanc&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/titojuanc/TpIntegrador-MelgarejoRicci.git",
-    "accountId": "ef93d538-c243-4257-a297-8fe6c7581ec1"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/titojuanc/TpIntegrador-MelgarejoRicci.git&quot;,
+    &quot;accountId&quot;: &quot;ef93d538-c243-4257-a297-8fe6c7581ec1&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>

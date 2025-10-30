@@ -2,6 +2,7 @@ package com.mercadotecnico.mr.mercadotecnico.controller;
 
 
 import com.mercadotecnico.mr.mercadotecnico.dto.CompraDTO;
+import com.mercadotecnico.mr.mercadotecnico.dto.NivelDTO;
 import com.mercadotecnico.mr.mercadotecnico.dto.PublicacionDTO;
 import com.mercadotecnico.mr.mercadotecnico.model.*;
 import com.mercadotecnico.mr.mercadotecnico.repository.*;
@@ -25,10 +26,11 @@ public class EjController {
     DiasServicioRepository bdd_diasDeServicio;
     ProductoRepository bdd_productos;
     CalendarioRepository bdd_calendario;
+    NivelRepository bdd_nivel;
     PublicacionService servicio_publicaciones;
     CompraService servicio_compras;
 
-    public EjController(UserRepository bdd_usuarios, PublicacionRepository bdd_publicaciones, DiaReposiroty bdd_dias, ServicioRepository bdd_servicios, DiasServicioRepository bdd_diasDeServicio, ProductoRepository bdd_productos, CalendarioRepository bdd_calendario, PublicacionService servicio_publicaciones, CompraService servicio_compras) {
+    public EjController(UserRepository bdd_usuarios, PublicacionRepository bdd_publicaciones, DiaReposiroty bdd_dias, ServicioRepository bdd_servicios, DiasServicioRepository bdd_diasDeServicio, ProductoRepository bdd_productos, CalendarioRepository bdd_calendario, NivelRepository bdd_nivel, PublicacionService servicio_publicaciones, CompraService servicio_compras) {
         this.bdd_usuarios = bdd_usuarios;
         this.bdd_publicaciones = bdd_publicaciones;
         this.bdd_dias = bdd_dias;
@@ -36,6 +38,7 @@ public class EjController {
         this.bdd_diasDeServicio = bdd_diasDeServicio;
         this.bdd_productos = bdd_productos;
         this.bdd_calendario = bdd_calendario;
+        this.bdd_nivel = bdd_nivel;
         this.servicio_publicaciones = servicio_publicaciones;
         this.servicio_compras = servicio_compras;
     }
@@ -133,5 +136,13 @@ public class EjController {
         return servicio_compras.crear(dto);
     }
 
-    
+    // 3g
+    @GetMapping("GET/api/usuarios/{id}/nivel")
+    public NivelDTO verNivel(@PathVariable Long id){
+        Usuario usuario = bdd_usuarios.findById(id).get();
+        Long idNivel = (long) usuario.getId_nivel();
+        Nivel nivel = bdd_nivel.findById(idNivel).get();
+        NivelDTO nivelYdescuento = new NivelDTO(usuario, nivel.getNombre(), nivel.getDescuento());
+        return nivelYdescuento;
+    }
 }
