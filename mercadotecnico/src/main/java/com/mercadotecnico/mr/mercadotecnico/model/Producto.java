@@ -18,12 +18,20 @@ public class Producto {
     private int garantia;
     private int stock;
 
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
+    private Categoria categoria;
+
+    private boolean usado;
+
     public Producto(){}
 
-    public Producto(Publicacion publicacion, int garantia, int stock){
-        this.publicacion=publicacion;
-        this.garantia=garantia;
-        this.stock=stock;
+    public Producto(Publicacion publicacion, int garantia, int stock, Categoria categoria, boolean usado) {
+        this.publicacion = publicacion;
+        this.garantia = garantia;
+        this.stock = stock;
+        this.categoria = categoria;
+        this.usado = usado;
     }
 
     public Publicacion getPublicacion() {
@@ -46,7 +54,22 @@ public class Producto {
         return stock;
     }
 
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
     public void setStock(int stock) {
         this.stock = stock;
+    }
+    public boolean isUsado() {
+        return usado;
+    }
+
+    public void setUsado(boolean usado) {
+        this.usado = usado;
     }
 }

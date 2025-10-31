@@ -14,10 +14,12 @@ public class PublicacionDTO {
     private Long id_usuario;
     private String estado;
     private String tipo;
+    private boolean usado;
+    private int categoria;
     private int garantia;
     private List<Long> dias;
 
-    public PublicacionDTO( String nombre, String descripcion, LocalDate fechaPublicacion, Double precio, int stock, Long id_usuario, String estado, String tipo, int garantia, List<Long> dias) {
+    public PublicacionDTO(String nombre, String descripcion, LocalDate fechaPublicacion, Double precio, int stock, Long id_usuario, String estado, String tipo, boolean usado, int categoria, int garantia, List<Long> dias) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaPublicacion = fechaPublicacion;
@@ -26,6 +28,8 @@ public class PublicacionDTO {
         this.id_usuario = id_usuario;
         this.estado = estado;
         this.tipo = tipo;
+        this.usado = usado;
+        this.categoria = categoria;
         this.garantia = garantia;
         this.dias = dias;
     }
@@ -108,5 +112,21 @@ public class PublicacionDTO {
 
     public void setDias(List<Long> dias) {
         this.dias = dias;
+    }
+
+    public int getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
+    }
+
+    public boolean isUsado() {
+        return usado;
+    }
+
+    public void setUsado(boolean usado) {
+        this.usado = usado;
     }
 }

@@ -23,11 +23,10 @@ public class Publicacion {
     private String descripcion;
     private LocalDate fechaPublicacion;
     private Double precio;
+    private String estado;
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario; // <-- relación con la entidad Usuario
-
-    private String estado;
 
     public Publicacion() {}
 
