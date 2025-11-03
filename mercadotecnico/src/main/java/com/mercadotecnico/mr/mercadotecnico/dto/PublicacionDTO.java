@@ -15,11 +15,12 @@ public class PublicacionDTO {
     private String estado;
     private String tipo;
     private boolean usado;
+    private String frecuencia;
     private int categoria;
     private int garantia;
     private List<Long> dias;
 
-    public PublicacionDTO(String nombre, String descripcion, LocalDate fechaPublicacion, Double precio, int stock, Long id_usuario, String estado, String tipo, boolean usado, int categoria, int garantia, List<Long> dias) {
+    public PublicacionDTO(String nombre, String descripcion, LocalDate fechaPublicacion, Double precio, int stock, Long id_usuario, String estado, String tipo, boolean usado, String frecuencia, int categoria, int garantia, List<Long> dias) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaPublicacion = fechaPublicacion;
@@ -29,6 +30,7 @@ public class PublicacionDTO {
         this.estado = estado;
         this.tipo = tipo;
         this.usado = usado;
+        this.frecuencia = frecuencia;
         this.categoria = categoria;
         this.garantia = garantia;
         this.dias = dias;
@@ -128,5 +130,13 @@ public class PublicacionDTO {
 
     public void setUsado(boolean usado) {
         this.usado = usado;
+    }
+
+    public String getFrecuencia() {
+        return frecuencia;
+    }
+
+    public void setFrecuencia(String frecuencia) {
+        this.frecuencia = frecuencia;
     }
 }

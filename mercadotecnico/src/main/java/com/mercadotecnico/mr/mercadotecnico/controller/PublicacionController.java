@@ -1,12 +1,14 @@
 package com.mercadotecnico.mr.mercadotecnico.controller;
 
 import com.mercadotecnico.mr.mercadotecnico.dto.PublicacionDTO;
+import com.mercadotecnico.mr.mercadotecnico.dto.ReportesDTO;
 import com.mercadotecnico.mr.mercadotecnico.model.*;
 import com.mercadotecnico.mr.mercadotecnico.repository.*;
 import com.mercadotecnico.mr.mercadotecnico.service.PublicacionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,8 +25,10 @@ public class PublicacionController {
     CategoriaRepository bdd_categoria;
     CalendarioRepository bdd_calendario;
     PublicacionService servicio_publicaciones;
+    CalificacionRepository bdd_calificacion;
+    ReporteRepository bdd_reportes;
 
-    public PublicacionController(UserRepository bdd_usuarios, PublicacionRepository bdd_publicaciones, DiaReposiroty bdd_dias, ServicioRepository bdd_servicios, ProductoRepository bdd_productos, DiasServicioRepository bdd_diasDeServicio, CategoriaRepository bdd_categoria, CalendarioRepository bdd_calendario, PublicacionService servicio_publicaciones) {
+    public PublicacionController(UserRepository bdd_usuarios, PublicacionRepository bdd_publicaciones, DiaReposiroty bdd_dias, ServicioRepository bdd_servicios, ProductoRepository bdd_productos, DiasServicioRepository bdd_diasDeServicio, CategoriaRepository bdd_categoria, CalendarioRepository bdd_calendario, PublicacionService servicio_publicaciones, CalificacionRepository bdd_calificacion, ReporteRepository bdd_reportes) {
         this.bdd_usuarios = bdd_usuarios;
         this.bdd_publicaciones = bdd_publicaciones;
         this.bdd_dias = bdd_dias;
@@ -34,32 +38,13 @@ public class PublicacionController {
         this.bdd_categoria = bdd_categoria;
         this.bdd_calendario = bdd_calendario;
         this.servicio_publicaciones = servicio_publicaciones;
+        this.bdd_calificacion = bdd_calificacion;
+        this.bdd_reportes = bdd_reportes;
     }
 
     @PostMapping("POST/api/usuarios/{idUsuario}/publicaciones")
     public void crearPublicacion(@PathVariable Long idUsuario, @RequestBody PublicacionDTO dto){
-        System.out.println(dto );
-        Usuario usuario =  bdd_usuarios.findById(dto.getId_usuario()).get();
-        System.out.println(usuario.getNombre());
-        Publicacion publicacion = new Publicacion(dto.getNombre(), dto.getDescripcion(), dto.getFechaPublicacion(), dto.getPrecio(), usuario, dto.getEstado());
-        System.out.println(publicacion.getEstado());
-        bdd_publicaciones.save(publicacion);
-        if (dto.getTipo().equals("Producto")){
-            Producto producto = new Producto(publicacion, dto.getGarantia(), dto.getStock(), bdd_categoria.findById((long) dto.getCategoria()).get(), dto.isUsado() );
-            System.out.println(producto.getGarantia());
-            bdd_productos.save(producto);
-        }
-        else {
-            Servicio servicio = new Servicio(publicacion);
-            bdd_servicios.save(servicio);
-            for (Long d : dto.getDias()){
-                Dia diaAux = bdd_dias.findById(d).get();
-                Servicio_has_dia diasdeservicio = new Servicio_has_dia(servicio, diaAux);
-                System.out.println(diasdeservicio.getServicio().getPublicacion().getNombre());
-                System.out.println(bdd_dias.findById(d).get().getDia());
-                bdd_diasDeServicio.save(diasdeservicio);
-            }
-        }
+        servicio_publicaciones.crearPublicacion(idUsuario, dto);
     }
 
     @GetMapping("/GET/api/publicacion/{id}")
@@ -89,4 +74,44 @@ public class PublicacionController {
             return ResponseEntity.badRequest().body("No existe publicacion con ese ID");
         }
     }
+
+    @PostMapping("POST/api/usuarios/{idUsuario}/publicacion/{idPublicacion}/calificar")
+    public ResponseEntity<?> calificarPublicacion(@PathVariable Long idUsuario, @PathVariable Long idPublicacion, @RequestBody Calificacion calificacion){
+        try{
+            bdd_calificacion.save(calificacion);
+        } catch (Exception e){
+            return ResponseEntity.ok(e.getMessage());
+        }
+        return ResponseEntity.ok("Calificación creada correctamente");
+    }
+
+    @GetMapping("/GET/api/publicacion/{id}/calificaciones")
+    public List<Calificacion> verCalificaciones(@PathVariable Long id){
+        return bdd_calificacion.findByPublicacion(bdd_publicaciones.findById(id).get());
+    }
+
+    @PostMapping("POST/api/usuarios/{idUsuario}/publicacion/{idPublicacion}/reportar")
+    public ResponseEntity<?> reportarPublicacion(@PathVariable Long idUsuario, @PathVariable Long idPublicacion, @RequestBody Reporte reporte ){
+        try {
+            bdd_reportes.save(reporte);
+        } catch (Exception e){
+            return ResponseEntity.ok(e.getMessage());
+        }
+        return ResponseEntity.ok("Reporte realizado con éxito");
+    }
+
+    @GetMapping("/GET/api/admin/reportes")
+    public List<ReportesDTO> verPublicacionesReportadas(){
+        List<ReportesDTO> reportes = new ArrayList<>();
+        List<Publicacion> publicaciones = bdd_publicaciones.findAll();
+        for (Publicacion p : publicaciones){
+            if (!bdd_reportes.findByPublicacion(p).isEmpty()){
+                ReportesDTO reporte = new ReportesDTO(p, bdd_reportes.findByPublicacion(p));
+                reportes.add(reporte);
+            }
+        }
+        return reportes;
+    }
+
+
 }

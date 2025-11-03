@@ -17,10 +17,21 @@ public class Servicio {
     @JoinColumn(name = "id_publicacion", nullable = false)
     private Publicacion publicacion;
 
+    private String frecuencia;
+
     public Servicio(){}
 
-    public Servicio(Publicacion publicacion) {
+    public Servicio(Publicacion publicacion, String frecuencia) {
         this.publicacion = publicacion;
+        this.frecuencia = frecuencia;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Publicacion getPublicacion() {
@@ -31,11 +42,11 @@ public class Servicio {
         this.publicacion = publicacion;
     }
 
-    public Long getId() {
-        return id;
+    public String getFrecuencia() {
+        return frecuencia;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setFrecuencia(String frecuencia) {
+        this.frecuencia = frecuencia;
     }
 }

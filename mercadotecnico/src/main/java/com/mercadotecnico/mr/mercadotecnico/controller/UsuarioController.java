@@ -68,7 +68,6 @@ public class UsuarioController {
             List<Calificacion> calificacionAux = bdd_calificaciones.findByPublicacion(p);
             calificaciones.addAll(calificacionAux);
         }
-
         ReputacionDTO dto = new ReputacionDTO(usuario, calificaciones);
         return dto;
     }
