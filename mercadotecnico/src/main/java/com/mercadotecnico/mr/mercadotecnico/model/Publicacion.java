@@ -7,15 +7,6 @@ import java.time.LocalDate;
 @Entity
 @Table (name = "publicacion")
 public class Publicacion {
-    /* id int primary key auto_increment,
-        nombre varchar(255) not null,
-        descripcion varchar(255) not null,
-        fecha_publicacion date not null,
-        precio decimal(10,2) not null,
-        stock int not null,
-        id_usuario int,
-        estado varchar(255) not null,
-        foreign key (id_usuario) references usuario(id)*/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -113,5 +113,11 @@ public class PublicacionController {
         return reportes;
     }
 
-
+    @GetMapping("/GET/api/publicaciones")
+    public List<Publicacion> filtrarPublicaciones(
+            @RequestParam(required = false) boolean usado,
+            @RequestParam(required = false) int categoria,
+            @RequestParam(required = false) String tipo){
+        return servicio_publicaciones.filtrar(usado, categoria, tipo);
+    }
 }

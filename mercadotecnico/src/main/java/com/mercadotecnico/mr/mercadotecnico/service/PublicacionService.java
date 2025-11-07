@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.ArrayList;
+
 @Service
 public class PublicacionService {
     private PublicacionRepository bdd_publicaciones;
@@ -64,4 +68,39 @@ public class PublicacionService {
             }
         }
     }
+
+    public List<Publicacion> filtrar(Boolean usado, Integer categoria, String tipo) {
+        // Si tipo no está definido, retornamos todas las publicaciones
+        if (tipo == null) {
+            List<Publicacion> publicaciones = new ArrayList<>();
+            publicaciones.addAll(bdd_productos.findAll().stream()
+                    .map(Producto::getPublicacion)
+                    .toList());
+            publicaciones.addAll(bdd_servicios.findAll().stream()
+                    .map(Servicio::getPublicacion)
+                    .toList());
+            return publicaciones;
+        }
+
+        // Filtrar por tipo
+        switch (tipo.toLowerCase()) {
+            case "producto":
+                return bdd_productos.findAll().stream()
+                        .filter(prod -> usado == null || prod.isUsado() == usado)
+                        .filter(prod -> categoria == null ||
+                                (prod.getCategoria() != null && prod.getCategoria().getId().equals(categoria.longValue())))
+                        .map(Producto::getPublicacion)
+                        .collect(Collectors.toList());
+
+            case "servicio":
+                return bdd_servicios.findAll().stream()
+                        .map(Servicio::getPublicacion)
+                        .collect(Collectors.toList());
+
+            default:
+                // Si el tipo no es reconocido, retornamos vacío
+                return new ArrayList<>();
+        }
+    }
+
 }
