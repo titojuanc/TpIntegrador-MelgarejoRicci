@@ -45,8 +45,8 @@ public class PublicacionService {
     public void crearPublicacion(Long idUsuario,
                                  PublicacionDTO dto
                                  ){
-        System.out.println(dto );
-        Usuario usuario =  bdd_usuarios.findById(dto.getId_usuario()).get();
+        System.out.println(dto);
+        Usuario usuario =  bdd_usuarios.findById(idUsuario).get();
         System.out.println(usuario.getNombre());
         Publicacion publicacion = new Publicacion(dto.getNombre(), dto.getDescripcion(), dto.getFechaPublicacion(), dto.getPrecio(), usuario, dto.getEstado());
         System.out.println(publicacion.getEstado());
@@ -56,7 +56,7 @@ public class PublicacionService {
             System.out.println(producto.getGarantia());
             bdd_productos.save(producto);
         }
-        else {
+        else if (dto.getTipo().equals("Servicio")){
             Servicio servicio = new Servicio(publicacion, dto.getFrecuencia());
             bdd_servicios.save(servicio);
             for (Long d : dto.getDias()){
@@ -70,7 +70,6 @@ public class PublicacionService {
     }
 
     public List<Publicacion> filtrar(Boolean usado, Integer categoria, String tipo) {
-        // Si tipo no está definido, retornamos todas las publicaciones
         if (tipo == null) {
             List<Publicacion> publicaciones = new ArrayList<>();
             publicaciones.addAll(bdd_productos.findAll().stream()
@@ -82,7 +81,6 @@ public class PublicacionService {
             return publicaciones;
         }
 
-        // Filtrar por tipo
         switch (tipo.toLowerCase()) {
             case "producto":
                 return bdd_productos.findAll().stream()
@@ -98,7 +96,6 @@ public class PublicacionService {
                         .collect(Collectors.toList());
 
             default:
-                // Si el tipo no es reconocido, retornamos vacío
                 return new ArrayList<>();
         }
     }

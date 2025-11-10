@@ -11,7 +11,6 @@ public class PublicacionDTO {
     private LocalDate fechaPublicacion;
     private Double precio;
     private int stock;
-    private Long id_usuario;
     private String estado;
     private String tipo;
     private boolean usado;
@@ -20,13 +19,12 @@ public class PublicacionDTO {
     private int garantia;
     private List<Long> dias;
 
-    public PublicacionDTO(String nombre, String descripcion, LocalDate fechaPublicacion, Double precio, int stock, Long id_usuario, String estado, String tipo, boolean usado, String frecuencia, int categoria, int garantia, List<Long> dias) {
+    public PublicacionDTO(String nombre, String descripcion, LocalDate fechaPublicacion, Double precio, int stock, String estado, String tipo, boolean usado, String frecuencia, int categoria, int garantia, List<Long> dias) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaPublicacion = fechaPublicacion;
         this.precio = precio;
         this.stock = stock;
-        this.id_usuario = id_usuario;
         this.estado = estado;
         this.tipo = tipo;
         this.usado = usado;
@@ -74,14 +72,6 @@ public class PublicacionDTO {
 
     public void setStock(int stock) {
         this.stock = stock;
-    }
-
-    public Long getId_usuario() {
-        return id_usuario;
-    }
-
-    public void setId_usuario(Long id_usuario) {
-        this.id_usuario = id_usuario;
     }
 
     public String getEstado() {
