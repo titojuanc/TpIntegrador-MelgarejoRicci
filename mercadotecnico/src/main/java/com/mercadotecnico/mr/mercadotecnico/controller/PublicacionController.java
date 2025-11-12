@@ -1,6 +1,8 @@
 package com.mercadotecnico.mr.mercadotecnico.controller;
 
+import com.mercadotecnico.mr.mercadotecnico.dto.CalificacionDTO;
 import com.mercadotecnico.mr.mercadotecnico.dto.PublicacionDTO;
+import com.mercadotecnico.mr.mercadotecnico.dto.ReporteDTO;
 import com.mercadotecnico.mr.mercadotecnico.dto.ReportesDTO;
 import com.mercadotecnico.mr.mercadotecnico.model.*;
 import com.mercadotecnico.mr.mercadotecnico.repository.*;
@@ -76,8 +78,9 @@ public class PublicacionController {
     }
 
     @PostMapping("POST/api/usuarios/{idUsuario}/publicacion/{idPublicacion}/calificar")
-    public ResponseEntity<?> calificarPublicacion(@PathVariable Long idUsuario, @PathVariable Long idPublicacion, @RequestBody Calificacion calificacion){
+    public ResponseEntity<?> calificarPublicacion(@PathVariable Long idUsuario, @PathVariable Long idPublicacion, @RequestBody CalificacionDTO dto){
         try{
+            Calificacion calificacion = new Calificacion(dto.getCalificacion(), bdd_usuarios.findById(idUsuario).get(), bdd_publicaciones.findById(idPublicacion).get());
             bdd_calificacion.save(calificacion);
         } catch (Exception e){
             return ResponseEntity.ok(e.getMessage());
@@ -91,8 +94,9 @@ public class PublicacionController {
     }
 
     @PostMapping("POST/api/usuarios/{idUsuario}/publicacion/{idPublicacion}/reportar")
-    public ResponseEntity<?> reportarPublicacion(@PathVariable Long idUsuario, @PathVariable Long idPublicacion, @RequestBody Reporte reporte ){
+    public ResponseEntity<?> reportarPublicacion(@PathVariable Long idUsuario, @PathVariable Long idPublicacion, @RequestBody ReporteDTO dto){
         try {
+            Reporte reporte = new Reporte(dto.getMensaje(), bdd_usuarios.findById(idUsuario).get(), bdd_publicaciones.findById(idPublicacion).get());
             bdd_reportes.save(reporte);
         } catch (Exception e){
             return ResponseEntity.ok(e.getMessage());

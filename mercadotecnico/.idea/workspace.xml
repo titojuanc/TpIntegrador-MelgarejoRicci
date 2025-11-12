@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a5f6f89-0f75-42d7-89d2-a38f4b52e66e" name="Changes" comment="Empezado el Getter con filtro.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/CalificacionDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/ReporteDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.bin" afterDir="false" />
@@ -13,17 +15,28 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/controller/ComprasController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/controller/ComprasController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/controller/PublicacionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/controller/PublicacionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/dto/PublicacionDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/dto/PublicacionDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Categoria.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Categoria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Publicacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Publicacion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/service/PublicacionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/service/PublicacionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PublicacionController.class.uniqueId1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PublicacionService.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/dto/CompraDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/dto/CompraDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Calificacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Calificacion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Reporte.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Reporte.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/service/CompraService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/service/CompraService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Categoria.class.uniqueId6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/CategoriaRepository.class.uniqueId2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/CompraService.class.uniqueId4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/ComprasController.class.uniqueId5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Producto.class.uniqueId7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/ProductoRepository.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PublicacionController.class.uniqueId3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PublicacionService.class.uniqueId1" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/PublicacionDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/PublicacionDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Categoria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/service/PublicacionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/service/PublicacionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/ComprasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/ComprasController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/PublicacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/PublicacionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/CompraDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/CompraDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Calificacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Calificacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Reporte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Reporte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/service/CompraService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/service/CompraService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

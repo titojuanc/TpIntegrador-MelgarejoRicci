@@ -10,7 +10,7 @@ public class Calificacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int calificacion;
+    private double calificacion;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
@@ -20,22 +20,15 @@ public class Calificacion {
     @JoinColumn(name = "id_publicacion")
     private Publicacion publicacion;
 
-    public Calificacion(Long id, int calificacion, Usuario usuario, Publicacion publicacion) {
-        this.id = id;
+    public Calificacion(double calificacion, Usuario usuario, Publicacion publicacion) {
         this.calificacion = calificacion;
         this.usuario = usuario;
         this.publicacion = publicacion;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Calificacion(){}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public int getCalificacion() {
+    public double getCalificacion() {
         return calificacion;
     }
 

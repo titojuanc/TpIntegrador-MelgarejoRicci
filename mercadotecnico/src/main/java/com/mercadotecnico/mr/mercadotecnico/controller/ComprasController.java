@@ -24,8 +24,7 @@ public class ComprasController {
 
     @PostMapping("POST/api/usuarios/{idUsuario}/compras/{idPublicacion}")
     public ResponseEntity<?> comprar(@PathVariable Long idUsuario, @PathVariable Long idPublicacion, @RequestBody CompraDTO dto){
-        System.out.println(dto.getId_publicacion());
-        return servicio_compras.crear(dto);
+        return servicio_compras.crear(dto, idUsuario, idPublicacion);
     }
 
     @GetMapping("GET/api/usuarios/{id}/compras/")

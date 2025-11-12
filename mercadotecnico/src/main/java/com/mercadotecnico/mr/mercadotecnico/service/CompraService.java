@@ -30,19 +30,19 @@ public class CompraService {
         this.bdd_dia = bdd_dia;
     }
 
-    public ResponseEntity<?> crear(CompraDTO dto){
-        if (bdd_publicaciones.findById(dto.getId_publicacion()).isEmpty()){
+    public ResponseEntity<?> crear(CompraDTO dto, Long id_usuario, Long id_publicacion){
+        if (bdd_publicaciones.findById(id_publicacion).isEmpty()){
             return ResponseEntity.ok("que");
         }
-        Publicacion publicacion = bdd_publicaciones.findById(dto.getId_publicacion()).get();
-        Usuario usuario = bdd_usuario.findById(dto.getId_usuario()).get();
+        Publicacion publicacion = bdd_publicaciones.findById(id_publicacion).get();
+        Usuario usuario = bdd_usuario.findById(id_usuario).get();
         if (dto.getDias_elegidos().isEmpty()){
             System.out.println(dto.getCantidad());
-            System.out.println(bdd_producto.findById(publicacion.getId()).get().getStock());
-            if (bdd_producto.findById(publicacion.getId()).get().getStock()>=dto.getCantidad() ){
+            System.out.println(bdd_producto.findById(id_publicacion).get().getStock());
+            if (bdd_producto.findById(id_publicacion).get().getStock()>=dto.getCantidad() ){
                 Compra compra = new Compra(LocalDateTime.now(), dto.getTotal(), usuario, publicacion, dto.getCantidad());
                 bdd_compras.save(compra);
-                Producto producto = bdd_producto.findById(dto.getId_publicacion()).get();
+                Producto producto = bdd_producto.findById(id_publicacion).get();
                 producto.setStock(producto.getStock()-dto.getCantidad());
                 bdd_producto.save(producto);
                 return ResponseEntity.ok("Compra realizada");
@@ -51,7 +51,7 @@ public class CompraService {
             }
         } else {
             System.out.println("entré acá");
-            Servicio servicio = bdd_servicio.findById(dto.getId_publicacion()).get();
+            Servicio servicio = bdd_servicio.findById(id_publicacion).get();
             List<Calendario> calendarios = bdd_calendario.findByServicio(servicio);
             if (!calendarios.isEmpty()){
                 for (Calendario calendario : calendarios){

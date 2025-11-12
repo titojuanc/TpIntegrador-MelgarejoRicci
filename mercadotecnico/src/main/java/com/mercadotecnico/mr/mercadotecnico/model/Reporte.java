@@ -19,19 +19,10 @@ public class Reporte {
     @JoinColumn(name = "id_publicacion")
     private Publicacion publicacion;
 
-    public Reporte(Long id, String mensaje, Usuario usuario, Publicacion publicacion) {
-        this.id = id;
+    public Reporte(String mensaje, Usuario usuario, Publicacion publicacion) {
         this.mensaje = mensaje;
         this.usuario = usuario;
         this.publicacion = publicacion;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getMensaje() {
