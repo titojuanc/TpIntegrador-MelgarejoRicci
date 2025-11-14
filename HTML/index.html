@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-commerce App - Inicio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const { useState, useEffect, useCallback } = React;
+
+      // --- DATA ---
+      const CATEGORIES = [
+        { id: 1, name: 'ÚTILES / MATERIALES', imageUrl: 'https://images.unsplash.com/photo-1628379741292-0b8d53050b65?w=150&h=150&fit=crop&q=80' },
+        { id: 2, name: 'SERVICIOS / ASESORÍAS', imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=150&h=150&fit=crop&q=80' },
+        { id: 3, name: 'EXÁMENES / APUNTES', imageUrl: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=150&h=150&fit=crop&q=80' },
+      ];
+
+      const BEST_SELLERS = [
+        { id: 1, name: 'Cuaderno Universitario Pro', category: 'Papelería', price: 4500, imageUrl: 'https://images.unsplash.com/photo-1588282322673-c31965a75c3e?w=300&h=300&fit=crop&q=80' },
+        { id: 2, name: 'Set Destacadores Pastel', category: 'Escritura', price: 8000, imageUrl: 'https://images.unsplash.com/photo-1565352316597-a7e8a3b839b2?w=300&h=300&fit=crop&q=80' },
+        { id: 3, name: 'Calculadora Científica FX', category: 'Instrumentos', price: 18000, imageUrl: 'https://images.unsplash.com/photo-1558669335-51363402315b?w=300&h=300&fit=crop&q=80' },
+        { id: 4, name: 'Libro de Cálculo Avanzado', category: 'Libros', price: 25000, imageUrl: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=300&h=300&fit=crop&q=80' }
+      ];
+
+      const PROMOTIONS = [
+        { id: 5, name: 'Set de Pinceles Acuarela', category: 'Arte', price: 9500, originalPrice: 12500, imageUrl: 'https://images.unsplash.com/photo-1529222476579-2af713605335?w=300&h=300&fit=crop&q=80' },
+        { id: 6, name: 'Mochila Urbana Resistente', category: 'Accesorios', price: 22500, originalPrice: 30000, imageUrl: 'https://images.unsplash.com/photo-1603461653108-96b66d935a2d?w=300&h=300&fit=crop&q=80' },
+        { id: 7, name: 'Tijeras de Precisión y Papel', category: 'Manualidades', price: 5500, originalPrice: 7500, imageUrl: 'https://images.unsplash.com/photo-1595431690933-3156a0fe3812?w=300&h=300&fit=crop&q=80' },
+        { id: 8, name: 'Estuche Multifuncional', category: 'Organización', price: 8000, originalPrice: 11000, imageUrl: 'https://images.unsplash.com/photo-1600880292213-2391b179375e?w=300&h=300&fit=crop&q=80' }
+      ];
+      
+      // --- HELPER FUNCTIONS ---
+      const formatPrice = (price) => `$${price.toLocaleString('es-CL')}`;
+
+      // --- REUSABLE COMPONENTS ---
+      const ProductCard = ({ product, isPromotion = false }) => {
+        const priceTagColor = isPromotion ? 'bg-orange-500' : 'bg-green-500';
+        const priceTextColor = isPromotion ? 'text-orange-500' : 'text-gray-800';
+        return (
+          <div className="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
+            <div className="w-full h-48 bg-gray-200"><img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover" /></div>
+            <div className="p-4">
+              <p className="text-xs text-gray-500 uppercase">{product.category}</p>
+              <h4 className="text-md font-semibold text-gray-800 truncate">{product.name}</h4>
+              <div className="mt-2 flex items-baseline justify-between">
+                <div className="flex flex-col">
+                  {isPromotion && product.originalPrice && (<span className="text-sm text-gray-400 line-through">{formatPrice(product.originalPrice)}</span>)}
+                  <span className={`text-xl font-bold ${priceTextColor}`}>{formatPrice(product.price)}</span>
+                </div>
+                <div className={`${priceTagColor} text-white text-xs font-bold px-2 py-1 rounded-full`}>{isPromotion ? 'OFERTA' : 'NUEVO'}</div>
+              </div>
+            </div>
+          </div>
+        );
+      };
+
+      const CategoryCard = ({ name, imageUrl }) => (
+        <div className="flex flex-col items-center group cursor-pointer w-40">
+          <div className="w-32 h-32 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden border-4 border-transparent group-hover:border-blue-500 transition-all duration-300">
+            <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
+          </div>
+          <h3 className="mt-4 text-sm font-semibold text-gray-700 uppercase tracking-wider">{name}</h3>
+        </div>
+      );
+
+      const Carousel = ({ images, autoPlayInterval = 5000 }) => {
+        const [currentIndex, setCurrentIndex] = useState(0);
+        const goToPrevious = () => setCurrentIndex(prev => (prev === 0 ? images.length - 1 : prev - 1));
+        const goToNext = useCallback(() => setCurrentIndex(prev => (prev === images.length - 1 ? 0 : prev + 1)), [images.length]);
+        useEffect(() => {
+          const timer = setTimeout(goToNext, autoPlayInterval);
+          return () => clearTimeout(timer);
+        }, [currentIndex, goToNext, autoPlayInterval]);
+        if (!images || !images.length) return <div className="relative w-full h-64 md:h-96 bg-gray-200 rounded-lg flex items-center justify-center"><p>No images</p></div>;
+        return (
+          <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-lg">
+            <div className="w-full h-full bg-center bg-cover duration-500" style={{ backgroundImage: `url(${images[currentIndex]})` }}></div>
+            <div className="absolute top-1/2 left-5 transform -translate-y-1/2 text-white text-4xl cursor-pointer bg-black bg-opacity-30 rounded-full p-2 hover:bg-opacity-50" onClick={goToPrevious}>&#10094;</div>
+            <div className="absolute top-1/2 right-5 transform -translate-y-1/2 text-white text-4xl cursor-pointer bg-black bg-opacity-30 rounded-full p-2 hover:bg-opacity-50" onClick={goToNext}>&#10095;</div>
+          </div>
+        );
+      };
+      
+      const LogoIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-blue-900" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>);
+      const SearchIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>);
+      const UserIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z" /></svg>);
+
+      const Header = () => (
+          <header className="bg-blue-900 shadow-md sticky top-0 z-50">
+              <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+                  <a href="./index.html" className="flex items-center">
+                      <div className="bg-white p-1 rounded-full"><LogoIcon /></div>
+                  </a>
+                  <div className="flex-1 max-w-xl mx-4 hidden md:flex items-center bg-white rounded-md">
+                      <input type="text" placeholder="Buscar productos, servicios y más..." className="w-full py-2 px-4 text-gray-700 rounded-l-md focus:outline-none" />
+                      <button className="p-2"><SearchIcon /></button>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                      <div className="hidden sm:flex flex-col">
+                          <a href="./login.html" className="text-center bg-white text-blue-900 font-semibold py-1 px-4 rounded-t-md hover:bg-gray-200 transition duration-300 text-xs">Iniciar sesión</a>
+                          <a href="./register.html" className="text-center bg-black text-white font-semibold py-1 px-4 rounded-b-md hover:bg-gray-700 transition duration-300 text-xs">Registrarse</a>
+                      </div>
+                      <a href="./profile.html" className="p-1 border-2 border-white rounded-full hover:bg-white/20 transition-colors"><UserIcon /></a>
+                  </div>
+              </div>
+              <div className="container mx-auto px-4 pb-3 md:hidden">
+                  <div className="flex items-center bg-white rounded-md">
+                      <input type="text" placeholder="Buscar..." className="w-full py-2 px-4 text-gray-700 rounded-l-md focus:outline-none" />
+                      <button className="p-2"><SearchIcon /></button>
+                  </div>
+              </div>
+          </header>
+      );
+
+      const FlagIcon = ({ code }) => (<img src={`https://flagcdn.com/w20/${code}.png`} width="20" alt={`${code} flag`} />);
+
+      const Footer = () => (
+          <footer className="bg-blue-900 text-white">
+              <div className="container mx-auto px-4 py-8">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                      <div>
+                          <h4 className="font-bold text-lg mb-2 border-b-2 border-blue-700 pb-1">ÚNETE PARA MÁS</h4>
+                          <a href="./register.html" className="hover:text-gray-300">Regístrate</a>
+                      </div>
+                      <div></div>
+                      <div className="text-left md:text-right">
+                          <h4 className="font-bold text-lg mb-2">INFO</h4>
+                          <ul>
+                              <li><a href="#" className="hover:text-gray-300 text-sm">TÉRMINOS Y CONDICIONES</a></li>
+                              <li><a href="#" className="hover:text-gray-300 text-sm">CONTÁCTANOS</a></li>
+                              <li><a href="#" className="hover:text-gray-300 text-sm">POLÍTICA LEGAL</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div className="mt-8 pt-4 border-t border-blue-700 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
+                      <p>© 2024 - MiTiendaOnline | Tecnología de Vangard | Designed by The Anders DMP Group</p>
+                      <div className="flex items-center space-x-2 mt-4 md:mt-0">
+                          <FlagIcon code="cl" /><FlagIcon code="ar" /><FlagIcon code="pe" /><FlagIcon code="co" /><FlagIcon code="mx" /><FlagIcon code="us" />
+                      </div>
+                  </div>
+              </div>
+          </footer>
+      );
+
+      // --- MAIN APP COMPONENT ---
+      const App = () => {
+        const carouselImages = [
+          'https://images.unsplash.com/photo-1456735180827-f03943b78a1f?q=80&w=1200&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1599688377982-277521504a43?q=80&w=1200&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1200&auto=format&fit=crop',
+        ];
+        return (
+          <div className="bg-gray-100 min-h-screen">
+            <Header />
+            <main className="container mx-auto px-4 md:px-8">
+              <section className="my-8">
+                <Carousel images={carouselImages} />
+              </section>
+              <section className="my-12 text-center">
+                <h2 className="text-3xl font-bold mb-8 text-gray-800">CATEGORÍAS PRINCIPALES</h2>
+                <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+                  {CATEGORIES.map(c => <CategoryCard key={c.id} name={c.name} imageUrl={c.imageUrl} />)}
+                </div>
+              </section>
+              <section className="my-12">
+                <h2 className="text-3xl font-bold mb-8 text-gray-800">MÁS VENDIDOS</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                  {BEST_SELLERS.map(p => <ProductCard key={p.id} product={p} />)}
+                </div>
+              </section>
+              <section className="my-12">
+                <h2 className="text-3xl font-bold mb-8 text-gray-800">MEJORES PROMOCIONES</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                  {PROMOTIONS.map(p => <ProductCard key={p.id} product={p} isPromotion={true} />)}
+                </div>
+              </section>
+            </main>
+            <Footer />
+          </div>
+        );
+      };
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<App />);
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
