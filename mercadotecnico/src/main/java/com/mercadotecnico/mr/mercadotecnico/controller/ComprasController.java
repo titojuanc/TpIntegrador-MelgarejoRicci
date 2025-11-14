@@ -15,11 +15,10 @@ import java.util.List;
 public class ComprasController {
 
     CompraService servicio_compras;
-    UserRepository bdd_usuarios;
 
-    public ComprasController(CompraService servicio_compras, UserRepository bdd_usuarios) {
+
+    public ComprasController(CompraService servicio_compras) {
         this.servicio_compras = servicio_compras;
-        this.bdd_usuarios = bdd_usuarios;
     }
 
     @PostMapping("POST/api/usuarios/{idUsuario}/compras/{idPublicacion}")
@@ -29,8 +28,7 @@ public class ComprasController {
 
     @GetMapping("GET/api/usuarios/{id}/compras/")
     public List<Compra> mostrarCompras(@PathVariable Long id){
-        Usuario usuario = bdd_usuarios.findById(id).get();
-        return servicio_compras.comprasPorUsuario(usuario);
+        return servicio_compras.comprasPorUsuario(id);
     }
 
 

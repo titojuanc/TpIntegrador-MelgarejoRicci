@@ -72,7 +72,8 @@ public class CompraService {
         return ResponseEntity.ok("Cómo pingo llegué acá???");
     }
 
-    public List<Compra> comprasPorUsuario(Usuario usuario){
+    public List<Compra> comprasPorUsuario(Long id){
+        Usuario usuario = bdd_usuario.findById(id).get();
         return bdd_compras.findByUsuario(usuario);
     }
 }

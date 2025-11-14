@@ -10,6 +10,7 @@ import com.mercadotecnico.mr.mercadotecnico.repository.CalificacionRepository;
 import com.mercadotecnico.mr.mercadotecnico.repository.NivelRepository;
 import com.mercadotecnico.mr.mercadotecnico.repository.PublicacionRepository;
 import com.mercadotecnico.mr.mercadotecnico.repository.UserRepository;
+import com.mercadotecnico.mr.mercadotecnico.service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -20,55 +21,35 @@ import java.util.Optional;
 @RequestMapping("/")
 public class UsuarioController {
 
-    UserRepository bdd_usuarios;
-    PublicacionRepository bdd_publicaciones;
-    NivelRepository bdd_nivel;
-    CalificacionRepository bdd_calificaciones;
+    private UsuarioService servicio_usuario;
 
-    public UsuarioController(UserRepository bdd_usuarios, PublicacionRepository bdd_publicaciones, NivelRepository bdd_nivel, CalificacionRepository bdd_calificaciones) {
-        this.bdd_usuarios = bdd_usuarios;
-        this.bdd_publicaciones = bdd_publicaciones;
-        this.bdd_nivel = bdd_nivel;
-        this.bdd_calificaciones = bdd_calificaciones;
+    public UsuarioController(UsuarioService servicio_usuario) {
+        this.servicio_usuario = servicio_usuario;
     }
 
     @GetMapping("/GET/api/usuarios/{nombre}")
     public Optional<Usuario> obtenerPorNombre(@PathVariable String nombre) {
-        System.out.println(nombre);
-        return bdd_usuarios.findByNombre(nombre);
+        return servicio_usuario.obtenerPorNombre(nombre);
     }
 
     // Punto 3a
     @PostMapping("/POST/api/usuarios")
     public Usuario crearUsuario(@RequestBody Usuario usuario) {
-        System.out.println(usuario);
-        return bdd_usuarios.save(usuario);
+        return servicio_usuario.crearUsuario(usuario);
     }
 
     @GetMapping("/GET/api/usuarios/{idUsuario}/publicaciones")
     public Optional<List<Publicacion>> obtenerPublicacionesDeUsuario(@PathVariable Long idUsuario){
-        return bdd_publicaciones.findByUsuario_Id(idUsuario);
+        return servicio_usuario.obtenerPublicacionesDeUsuario(idUsuario);
     }
 
     @GetMapping("GET/api/usuarios/{id}/nivel")
     public NivelDTO verNivel(@PathVariable Long id){
-        Usuario usuario = bdd_usuarios.findById(id).get();
-        Long idNivel = (long) usuario.getId_nivel();
-        Nivel nivel = bdd_nivel.findById(idNivel).get();
-        NivelDTO nivelYdescuento = new NivelDTO(usuario, nivel.getNombre(), nivel.getDescuento());
-        return nivelYdescuento;
+        return servicio_usuario.verNivel(id);
     }
 
     @GetMapping("/GET/api/usuarios/{id}/reputacion")
     public ReputacionDTO verReputacion(@PathVariable Long id){
-        Usuario usuario = bdd_usuarios.findById(id).get();
-        List<Publicacion> publicaciones = bdd_publicaciones.findByUsuario_Id(id).get();
-        List<Calificacion> calificaciones = new ArrayList<>();
-        for (Publicacion p : publicaciones){
-            List<Calificacion> calificacionAux = bdd_calificaciones.findByPublicacion(p);
-            calificaciones.addAll(calificacionAux);
-        }
-        ReputacionDTO dto = new ReputacionDTO(usuario, calificaciones);
-        return dto;
+        return servicio_usuario.verReputacion(id);
     }
 }
