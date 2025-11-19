@@ -1,13 +1,12 @@
 package com.mercadotecnico.mr.mercadotecnico.service;
 
-import com.mercadotecnico.mr.mercadotecnico.dto.CalificacionDTO;
-import com.mercadotecnico.mr.mercadotecnico.dto.PublicacionDTO;
-import com.mercadotecnico.mr.mercadotecnico.dto.ReporteDTO;
-import com.mercadotecnico.mr.mercadotecnico.dto.ReportesDTO;
+import com.mercadotecnico.mr.mercadotecnico.dto.*;
 import com.mercadotecnico.mr.mercadotecnico.model.*;
 import com.mercadotecnico.mr.mercadotecnico.repository.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import java.util.stream.Stream;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -78,36 +77,63 @@ public class PublicacionService {
         }
     }
 
-    public List<Publicacion> filtrar(Boolean usado, Integer categoria, String tipo) {
-        if (tipo == null) {
-            List<Publicacion> publicaciones = new ArrayList<>();
-            publicaciones.addAll(bdd_productos.findAll().stream()
-                    .map(Producto::getPublicacion)
-                    .toList());
-            publicaciones.addAll(bdd_servicios.findAll().stream()
-                    .map(Servicio::getPublicacion)
-                    .toList());
-            return publicaciones;
-        }
+    private boolean filtrarPorPrecio(Publicacion pub, Double min, Double max) {
+        double precio = pub.getPrecio();
 
-        switch (tipo.toLowerCase()) {
-            case "producto":
-                return bdd_productos.findAll().stream()
-                        .filter(prod -> usado == null || prod.isUsado() == usado)
-                        .filter(prod -> categoria == null ||
-                                (prod.getCategoria() != null && prod.getCategoria().getId().equals(categoria.longValue())))
-                        .map(Producto::getPublicacion)
-                        .collect(Collectors.toList());
+        if (min != null && precio < min) return false;
+        if (max != null && precio > max) return false;
 
-            case "servicio":
-                return bdd_servicios.findAll().stream()
-                        .map(Servicio::getPublicacion)
-                        .collect(Collectors.toList());
-
-            default:
-                return new ArrayList<>();
-        }
+        return true;
     }
+
+
+    public List<Publicacion> filtrar(
+            Boolean usado,
+            Integer categoria,
+            String tipo,
+            String frecuencia,
+            Double precioMin,
+            Double precioMax
+    ) {
+
+        // --- Caso 1: No se especifica tipo → devolver todo pero con filtros de precio ---
+        if (tipo == null) {
+            return Stream.concat(
+                    bdd_productos.findAll().stream()
+                            .filter(prod -> filtrarPorPrecio(prod.getPublicacion(), precioMin, precioMax))
+                            .map(Producto::getPublicacion),
+                    bdd_servicios.findAll().stream()
+                            .filter(serv -> filtrarPorPrecio(serv.getPublicacion(), precioMin, precioMax))
+                            .map(Servicio::getPublicacion)
+            ).toList();
+        }
+
+        // --- Caso 2: Filtrar productos ---
+        if (tipo.equalsIgnoreCase("producto")) {
+            return bdd_productos.findAll().stream()
+                    .filter(prod -> usado == null || prod.isUsado() == usado)
+                    .filter(prod -> categoria == null ||
+                            (prod.getCategoria() != null &&
+                                    prod.getCategoria().getId().equals(categoria.longValue())))
+                    .filter(prod -> filtrarPorPrecio(prod.getPublicacion(), precioMin, precioMax))
+                    .map(Producto::getPublicacion)
+                    .toList();
+        }
+
+        // --- Caso 3: Filtrar servicios ---
+        if (tipo.equalsIgnoreCase("servicio")) {
+            return bdd_servicios.findAll().stream()
+                    .filter(serv -> frecuencia == null ||
+                            (serv.getFrecuencia() != null &&
+                                    serv.getFrecuencia().equalsIgnoreCase(frecuencia)))
+                    .filter(serv -> filtrarPorPrecio(serv.getPublicacion(), precioMin, precioMax))
+                    .map(Servicio::getPublicacion)
+                    .toList();
+        }
+
+        return List.of(); // tipo inválido
+    }
+
 
     public Optional<Publicacion> obtenerPorId(Long id) {
         return bdd_publicaciones.findById(id);
@@ -169,6 +195,23 @@ public class PublicacionService {
             }
         }
         return reportes;
+    }
+
+    public List<MostrarPublicacionDTO> getAll(){
+        List<Publicacion> publis =  bdd_publicaciones.findAll();
+        List<MostrarPublicacionDTO> dtos = new ArrayList<>();
+        for (Publicacion p : publis){
+            if (!bdd_productos.findById(p.getId()).isEmpty()){
+                MostrarPublicacionDTO dto = new MostrarPublicacionDTO(p.getNombre(), p.getPrecio(), "PRODUCTO");
+                System.out.println(dto.getCategoría());
+                dtos.add(dto);
+            } else {
+                MostrarPublicacionDTO dto = new MostrarPublicacionDTO(p.getNombre(), p.getPrecio(), "SERVICIO");
+                System.out.println(dto.getCategoría());
+                dtos.add(dto);
+            }
+        }
+        return dtos;
     }
 
 }

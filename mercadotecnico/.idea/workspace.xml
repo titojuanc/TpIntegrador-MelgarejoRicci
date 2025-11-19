@@ -5,13 +5,115 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a5f6f89-0f75-42d7-89d2-a38f4b52e66e" name="Changes" comment="Empezado el Getter con filtro.">
+      <change afterPath="$PROJECT_DIR$/../BDD/BDD_HECHA.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/Gráficos.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/TABLAS_CSV.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/TABLAS_CSV/README.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/TABLAS_CSV/calendario.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/TABLAS_CSV/calificacion.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/TABLAS_CSV/categoria.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/TABLAS_CSV/compra.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/TABLAS_CSV/dia.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/TABLAS_CSV/nivel.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/TABLAS_CSV/notificaciones.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/TABLAS_CSV/producto.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/TABLAS_CSV/publicacion.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/TABLAS_CSV/reporte.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/TABLAS_CSV/servicio.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/TABLAS_CSV/servicio_has_dia.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/TABLAS_CSV/usuario.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BDD/Triggers-Eventos-Procedures.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HTML/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HTML/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HTML/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HTML/pruebasInsertarPublicacion.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HTML/pruebasInsertarPublicacionV2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HTML/pruebasInsertarUsuario.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HTML/pruebasNombre.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HTML/pruebasPublicaciones.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HTML/pruebasPublicación.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HTML/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/controller/ComprasController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/controller/PublicacionController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/controller/UsuarioController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/dto/ReportesDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/dto/ReputacionDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Calificacion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Categoria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Reporte.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/repository/CalificacionRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/repository/CategoriaRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/repository/ReporteRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/CalificacionDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/MostrarPublicacionDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/ReporteDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/ReportesDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/repository/ReporteRepository.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD-Triggers-Eventos-Procedures.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD_Exportada/tpmercadotecnico_calendario.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD_Exportada/tpmercadotecnico_calificacion.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD_Exportada/tpmercadotecnico_categoria.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD_Exportada/tpmercadotecnico_nivel.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD_Exportada/tpmercadotecnico_notificaciones.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD_Exportada/tpmercadotecnico_producto.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD_Exportada/tpmercadotecnico_publicacion.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD_Exportada/tpmercadotecnico_reporte.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD_Exportada/tpmercadotecnico_servicio.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD_Exportada/tpmercadotecnico_servicio_has_dia.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD_Exportada/tpmercadotecnico_usuario.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD_FINAL(Creo).sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD_Hecha_27_10.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD_Hecha_29_10.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TpIntegrador-MelgarejoRicci.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Triggers-Eventos-Procedures.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mercadotecnico.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/dto/CompraDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/dto/CompraDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/dto/PublicacionDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/dto/PublicacionDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Publicacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Publicacion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Servicio.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/model/Servicio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/service/CompraService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/service/CompraService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/service/PublicacionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/mercadotecnico/mr/mercadotecnico/service/PublicacionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/service/Servicio.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/ComprasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/ComprasController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/PublicacionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/PublicacionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/CompraDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/CompraDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/PublicacionDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/dto/PublicacionDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Calificacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Calificacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Categoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Publicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Publicacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Reporte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Reporte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Servicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/model/Servicio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/service/CompraService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/service/CompraService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/service/PublicacionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mercadotecnico/mr/mercadotecnico/service/PublicacionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Servicio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pruebasComprar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pruebasInsertarPublicacion.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pruebasInsertarPublicacionV2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pruebasInsertarUsuario.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pruebasNombre.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pruebasPublicaciones.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pruebasPublicación.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +183,7 @@
     &quot;Application.MercadotecnicoApplication.executor&quot;: &quot;Run&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;Gradle./home/Alumno26.MELGAREJO.Juan@ipm.edu.ar/Escritorio/TpIntegrador-MelgarejoRicci/mercadotecnico/build.gradle.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build mercadotecnico.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.mercadotecnico [:com.mercadotecnico.mr.mercadotecnico.MercadotecnicoApplication.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.mercadotecnico.executor&quot;: &quot;Run&quot;,
@@ -96,7 +199,20 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.MercadotecnicoApplication">
+  <component name="RunManager" selected="Application.MercadotecnicoApplication (1)">
+    <configuration name="MercadotecnicoApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mercadotecnico.mr.mercadotecnico.MercadotecnicoApplication" />
+      <module name="mercadotecnico.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mercadotecnico.mr.mercadotecnico.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MercadotecnicoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mercadotecnico.mr.mercadotecnico.MercadotecnicoApplication" />
       <module name="mercadotecnico" />
@@ -152,6 +268,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MercadotecnicoApplication (1)" />
         <item itemvalue="Application.MercadotecnicoApplication" />
         <item itemvalue="Gradle./home/Alumno26.MELGAREJO.Juan@ipm.edu.ar/Escritorio/TpIntegrador-MelgarejoRicci/mercadotecnico/build.gradle" />
         <item itemvalue="Gradle.mercadotecnico" />

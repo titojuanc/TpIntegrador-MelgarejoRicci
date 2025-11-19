@@ -27,6 +27,12 @@ public class UsuarioService {
     NivelRepository bdd_nivel;
     CalificacionRepository bdd_calificaciones;
 
+    public UsuarioService(UserRepository bdd_usuarios, PublicacionRepository bdd_publicaciones, NivelRepository bdd_nivel, CalificacionRepository bdd_calificaciones) {
+        this.bdd_usuarios = bdd_usuarios;
+        this.bdd_publicaciones = bdd_publicaciones;
+        this.bdd_nivel = bdd_nivel;
+        this.bdd_calificaciones = bdd_calificaciones;
+    }
 
     public Optional<Usuario> obtenerPorNombre(String nombre){
         return bdd_usuarios.findByNombre(nombre);

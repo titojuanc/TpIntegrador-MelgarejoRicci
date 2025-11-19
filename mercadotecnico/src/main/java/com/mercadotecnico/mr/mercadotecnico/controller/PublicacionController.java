@@ -1,9 +1,6 @@
 package com.mercadotecnico.mr.mercadotecnico.controller;
 
-import com.mercadotecnico.mr.mercadotecnico.dto.CalificacionDTO;
-import com.mercadotecnico.mr.mercadotecnico.dto.PublicacionDTO;
-import com.mercadotecnico.mr.mercadotecnico.dto.ReporteDTO;
-import com.mercadotecnico.mr.mercadotecnico.dto.ReportesDTO;
+import com.mercadotecnico.mr.mercadotecnico.dto.*;
 import com.mercadotecnico.mr.mercadotecnico.model.*;
 import com.mercadotecnico.mr.mercadotecnico.repository.*;
 import com.mercadotecnico.mr.mercadotecnico.service.PublicacionService;
@@ -59,11 +56,21 @@ public class PublicacionController {
         return servicio_publicaciones.verPublicacionesReportadas();
     }
 
-    @GetMapping("/GET/api/publicaciones")
+    @GetMapping("/GET/api/publicaciones/filtro")
     public List<Publicacion> filtrarPublicaciones(
-            @RequestParam(required = false) boolean usado,
-            @RequestParam(required = false) int categoria,
-            @RequestParam(required = false) String tipo){
-        return servicio_publicaciones.filtrar(usado, categoria, tipo);
+            @RequestParam(required = false) Boolean usado,
+            @RequestParam(required = false) Integer categoria,
+            @RequestParam(required = false) String tipo,
+            @RequestParam(required = false) String frecuencia,
+            @RequestParam(required = false) Double precioMin,
+            @RequestParam(required = false) Double precioMax
+    ) {
+        return servicio_publicaciones.filtrar(usado, categoria, tipo, frecuencia, precioMin, precioMax);
     }
+
+    @GetMapping("/GET/api/publicaciones")
+    public List<MostrarPublicacionDTO> verPublicaciones(){
+        return servicio_publicaciones.getAll();
+    }
+
 }
