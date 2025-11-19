@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-commerce App - Inicio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+        "react/": "https://aistudiocdn.com/react@^19.2.0/"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="/index.css">
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { useState, useEffect, useCallback } = React;
+
+      // --- DATA ---
+      const CATEGORIES = [
+        { id: 1, name: 'ÚTILES / MATERIALES', imageUrl: 'https://images.unsplash.com/photo-1628379741292-0b8d53050b65?w=150&h=150&fit=crop&q=80' },
+        { id: 2, name: 'SERVICIOS / ASESORÍAS', imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=150&h=150&fit=crop&q=80' },
+        { id: 3, name: 'EXÁMENES / APUNTES', imageUrl: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=150&h=150&fit=crop&q=80' },
+      ];
+
+      const formatPrice = (price) => `$${price?.toLocaleString('es-CL')}`;
+
+      // --- REUSABLE COMPONENTS ---
+      const ProductCard = ({ product, isPromotion = false }) => {
+        console.log(product.categoria);
+        const categoryLabel = product.categoria === "SERVICIO" ? "SERVICIO" : "PRODUCTO";
+        const priceTagColor = isPromotion ? 'bg-orange-500' : 'bg-green-500';
+        const priceTextColor = isPromotion ? 'text-orange-500' : 'text-gray-800';
+
+        return (
+          <div className="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
+            <div className="w-full h-48 bg-gray-200">
+              <img 
+                src={product.imageUrl || "https://via.placeholder.com/300x300"} 
+                alt={product.nombre || product.name} 
+                className="w-full h-full object-cover" 
+              />
+            </div>
+            <div className="p-4">
+              
+              {/* Aca cambiamos la categoría */}
+              <p className="text-xs text-gray-500 uppercase">{categoryLabel}</p>
+              <h4 className="text-md font-semibold text-gray-800 truncate">{product.nombre || product.name}</h4>
+
+              <div className="mt-2 flex items-baseline justify-between">
+                <span className={`text-xl font-bold ${priceTextColor}`}>
+                  {formatPrice(product.precio || product.price)}
+                </span>
+
+                <div className={`${priceTagColor} text-white text-xs font-bold px-2 py-1 rounded-full`}>
+                  {isPromotion ? 'OFERTA' : 'NUEVO'}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      };
+
+      const CategoryCard = ({ name, imageUrl }) => (
+        <div className="flex flex-col items-center group cursor-pointer w-40">
+          <div className="w-32 h-32 rounded-full bg-gray-200 overflow-hidden group-hover:border-blue-500 border-4 border-transparent transition-all duration-300">
+            <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
+          </div>
+          <h3 className="mt-4 text-sm font-semibold text-gray-700 uppercase">{name}</h3>
+        </div>
+      );
+
+      const Carousel = ({ images, autoPlayInterval = 5000 }) => {
+        const [currentIndex, setCurrentIndex] = useState(0);
+
+        const goToNext = useCallback(() =>
+          setCurrentIndex(prev => (prev === images.length - 1 ? 0 : prev + 1)), 
+          [images.length]
+        );
+
+        useEffect(() => {
+          const timer = setTimeout(goToNext, autoPlayInterval);
+          return () => clearTimeout(timer);
+        }, [currentIndex, goToNext, autoPlayInterval]);
+
+        return (
+          <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-lg">
+            <div 
+              className="w-full h-full bg-center bg-cover duration-500" 
+              style={{ backgroundImage: `url(${images[currentIndex]})` }}
+            ></div>
+
+            <div className="absolute top-1/2 left-5 transform -translate-y-1/2 text-white text-4xl cursor-pointer bg-black/30 rounded-full p-2"
+                 onClick={() => setCurrentIndex(prev => prev === 0 ? images.length - 1 : prev - 1)}>
+              &#10094;
+            </div>
+
+            <div className="absolute top-1/2 right-5 transform -translate-y-1/2 text-white text-4xl cursor-pointer bg-black/30 rounded-full p-2"
+                 onClick={goToNext}>
+              &#10095;
+            </div>
+          </div>
+        );
+      };
+
+      const Header = () => (
+        <header className="bg-blue-900 text-white shadow-md p-4 text-center text-xl font-bold">
+          MERCADO TÉCNICO
+        </header>
+      );
+
+      const Footer = () => (
+        <footer className="bg-blue-900 text-white text-center p-4 mt-12">
+          © 2025 Mercado Técnico
+        </footer>
+      );
+
+      // --- MAIN APP ---
+      const App = () => {
+        const [publicaciones, setPublicaciones] = useState([]);
+
+        useEffect(() => {
+          fetch("http://localhost:8080/GET/api/publicaciones")
+            .then(res => res.json())
+            .then(data => {
+              console.log("Publicaciones cargadas:", data);
+              setPublicaciones(data);
+            })
+            .catch(e => console.error("Error cargando publicaciones", e));
+        }, []);
+
+        const carouselImages = [
+          "https://images.unsplash.com/photo-1456735180827-f03943b78a1f?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1599688377982-277521504a43?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1200&auto=format&fit=crop"
+        ];
+
+        return (
+          <div className="bg-gray-100 min-h-screen">
+            <Header />
+
+            <main className="container mx-auto px-4">
+              <section className="my-8">
+                <Carousel images={carouselImages} />
+              </section>
+
+              <section className="my-12 text-center">
+                <h2 className="text-3xl font-bold mb-8 text-gray-800">CATEGORÍAS PRINCIPALES</h2>
+                <div className="flex flex-wrap justify-center gap-12">
+                  {CATEGORIES.map(c => <CategoryCard key={c.id} {...c} />)}
+                </div>
+              </section>
+
+              <section className="my-12">
+                <h2 className="text-3xl font-bold mb-8 text-gray-800">PUBLICACIONES</h2>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                  {publicaciones.length === 0
+                    ? <p className="text-gray-500">Cargando...</p>
+                    : publicaciones.map(p => <ProductCard key={p.id} product={p} />)
+                  }
+                </div>
+              </section>
+            </main>
+
+            <Footer />
+          </div>
+        );
+      };
+
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+  </body>
+</html>
