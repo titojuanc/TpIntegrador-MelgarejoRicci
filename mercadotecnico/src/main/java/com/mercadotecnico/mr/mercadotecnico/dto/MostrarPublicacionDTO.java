@@ -3,12 +3,12 @@ package com.mercadotecnico.mr.mercadotecnico.dto;
 public class MostrarPublicacionDTO {
     private String nombre;
     private double precio;
-    private String categoría;
+    private String categoria;
 
-    public MostrarPublicacionDTO(String nombre, double precio, String categoría) {
+    public MostrarPublicacionDTO(String nombre, double precio, String categoria) {
         this.nombre = nombre;
         this.precio = precio;
-        this.categoría = categoría;
+        this.categoria = categoria;
     }
 
     public String getNombre() {
@@ -27,11 +27,11 @@ public class MostrarPublicacionDTO {
         this.precio = precio;
     }
 
-    public String getCategoría() {
-        return categoría;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setCategoría(String categoría) {
-        this.categoría = categoría;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

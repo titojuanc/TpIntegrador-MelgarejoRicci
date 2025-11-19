@@ -76,8 +76,8 @@ public class Usuario{
         this.es_admin = esAdmin;
     }
 
-    public int getId_nivel() {
-        return id_nivel;
+    public Long getId_nivel() {
+        return (long) id_nivel;
     }
 
     public void setId_nivel(int id_nivel) {

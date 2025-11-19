@@ -2,6 +2,7 @@ package com.mercadotecnico.mr.mercadotecnico.service;
 
 import com.mercadotecnico.mr.mercadotecnico.controller.UsuarioController;
 import com.mercadotecnico.mr.mercadotecnico.dto.NivelDTO;
+import com.mercadotecnico.mr.mercadotecnico.dto.InfoPerfilDTO;
 import com.mercadotecnico.mr.mercadotecnico.dto.ReputacionDTO;
 import com.mercadotecnico.mr.mercadotecnico.model.Calificacion;
 import com.mercadotecnico.mr.mercadotecnico.model.Nivel;
@@ -63,6 +64,16 @@ public class UsuarioService {
             calificaciones.addAll(calificacionAux);
         }
         ReputacionDTO dto = new ReputacionDTO(usuario, calificaciones);
+        return dto;
+    }
+
+    public InfoPerfilDTO infoUsuario(Long id){
+        Usuario usuario = bdd_usuarios.findById(id).get();
+        String nivel = bdd_nivel.findById(usuario.getId_nivel()).get().getNombre();
+        int puntos = usuario.getPuntos_acumulados();
+        int cantidad_publicacion = obtenerPublicacionesDeUsuario(id).get().size();
+
+        InfoPerfilDTO dto = new InfoPerfilDTO(usuario.getNombre(), nivel ,cantidad_publicacion, puntos);
         return dto;
     }
 

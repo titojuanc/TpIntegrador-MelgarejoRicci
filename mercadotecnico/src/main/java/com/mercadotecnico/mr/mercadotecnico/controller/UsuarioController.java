@@ -1,6 +1,7 @@
 package com.mercadotecnico.mr.mercadotecnico.controller;
 
 import com.mercadotecnico.mr.mercadotecnico.dto.NivelDTO;
+import com.mercadotecnico.mr.mercadotecnico.dto.InfoPerfilDTO;
 import com.mercadotecnico.mr.mercadotecnico.dto.ReputacionDTO;
 import com.mercadotecnico.mr.mercadotecnico.model.Calificacion;
 import com.mercadotecnico.mr.mercadotecnico.model.Nivel;
@@ -19,17 +20,12 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
-public class UsuarioController {
+public class    UsuarioController {
 
     private UsuarioService servicio_usuario;
 
     public UsuarioController(UsuarioService servicio_usuario) {
         this.servicio_usuario = servicio_usuario;
-    }
-
-    @GetMapping("/GET/api/usuarios/{nombre}")
-    public Optional<Usuario> obtenerPorNombre(@PathVariable String nombre) {
-        return servicio_usuario.obtenerPorNombre(nombre);
     }
 
     // Punto 3a
@@ -51,5 +47,10 @@ public class UsuarioController {
     @GetMapping("/GET/api/usuarios/{id}/reputacion")
     public ReputacionDTO verReputacion(@PathVariable Long id){
         return servicio_usuario.verReputacion(id);
+    }
+
+    @GetMapping("GET/api/usuarios/{id}")
+    public InfoPerfilDTO infoUsuario(@PathVariable Long id){
+        return servicio_usuario.infoUsuario(id);
     }
 }

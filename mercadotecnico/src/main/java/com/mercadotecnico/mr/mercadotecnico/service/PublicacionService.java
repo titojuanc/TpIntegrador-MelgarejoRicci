@@ -203,11 +203,11 @@ public class PublicacionService {
         for (Publicacion p : publis){
             if (!bdd_productos.findById(p.getId()).isEmpty()){
                 MostrarPublicacionDTO dto = new MostrarPublicacionDTO(p.getNombre(), p.getPrecio(), "PRODUCTO");
-                System.out.println(dto.getCategoría());
+                System.out.println(dto.getCategoria());
                 dtos.add(dto);
             } else {
                 MostrarPublicacionDTO dto = new MostrarPublicacionDTO(p.getNombre(), p.getPrecio(), "SERVICIO");
-                System.out.println(dto.getCategoría());
+                System.out.println(dto.getCategoria());
                 dtos.add(dto);
             }
         }
