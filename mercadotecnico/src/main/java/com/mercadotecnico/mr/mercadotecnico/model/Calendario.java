@@ -31,6 +31,9 @@ public class Calendario {
         this.dia = dia;
     }
 
+    public Calendario() {
+    }
+
     public LocalDateTime getFecha() {
         return fecha;
     }

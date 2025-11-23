@@ -140,26 +140,57 @@ public class PublicacionService {
     }
 
     public ResponseEntity<?> eliminarPublicacion(Long id) throws Exception {
-        if (bdd_publicaciones.findById(id).isPresent()) {
-            Publicacion publicacion = bdd_publicaciones.findById(id).get();
-            if (bdd_servicios.findById(id).isPresent()) {
-                if (!bdd_calendario.findByServicio(bdd_servicios.findById(id).get()).isEmpty()) {
-                    actualizarEstado(id, "En pausa");
-                    return ResponseEntity.ok("La publicación se pausó porque hay usuarios que tienen contratado el servicio. Una vez finalizado, puede borrarse");
-                } else {
-                    bdd_servicios.delete(bdd_servicios.findById(id).get());
-                    bdd_publicaciones.delete(publicacion);
-                    return ResponseEntity.ok("Se borró con éxito");
-                }
-            } else { // Si no es servicio, es producto si o si
-                bdd_productos.delete(bdd_productos.findById(id).get());
-                bdd_publicaciones.delete(publicacion);
-                return ResponseEntity.ok("Se borró con éxito");
-            }
-        } else {
+
+        Optional<Publicacion> optionalPublicacion = bdd_publicaciones.findById(id);
+
+        if (optionalPublicacion.isEmpty()) {
             return ResponseEntity.badRequest().body("No existe publicacion con ese ID");
         }
+
+        Publicacion publicacion = optionalPublicacion.get();
+
+        // Primero revisamos si es un servicio
+        Optional<Servicio> optionalServicio = bdd_servicios.findById(id);
+
+        if (optionalServicio.isPresent()) {
+
+            Servicio servicio = optionalServicio.get();
+
+            // Verificar si el servicio tiene calendario activo
+            boolean tieneCalendarios = !bdd_calendario.findByServicio(servicio).isEmpty();
+
+            if (tieneCalendarios) {
+
+                actualizarEstado(id, "En pausa");
+                return ResponseEntity.ok(
+                        "La publicación se pausó porque hay usuarios que tienen contratado el servicio. " +
+                                "Una vez finalizado, puede borrarse"
+                );
+
+            } else {
+                // Eliminar el servicio y luego la publicación
+                bdd_servicios.delete(servicio);
+                bdd_publicaciones.delete(publicacion);
+
+                return ResponseEntity.ok("Se borró con éxito");
+            }
+
+        } else {
+            // Si no es servicio, asumimos que es producto
+            Optional<Producto> optionalProducto = bdd_productos.findById(id);
+
+            if (optionalProducto.isPresent()) {
+                bdd_productos.delete(optionalProducto.get());
+                bdd_publicaciones.delete(publicacion);
+                return ResponseEntity.ok("Se borró con éxito");
+            } else {
+                // Caso extremo: existe publicación pero no es servicio ni producto
+                return ResponseEntity.internalServerError()
+                        .body("Error: La publicación existe pero no se encontró ni en servicios ni productos.");
+            }
+        }
     }
+
 
     public ResponseEntity<?> calificarPublicacion(Long idUsuario, Long idPublicacion, CalificacionDTO dto) {
         try {
